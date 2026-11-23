@@ -75,10 +75,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -89,10 +89,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/about"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -107,14 +107,14 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             >
               <NavLink
                 to="/products"
-                className={`whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
+                className={`whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
                   isProductsActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`}
               >
                 <span>Products & Solutions</span>
-                <ChevronDown size={13} className={`transition-transform duration-200 ${productsDropdown ? 'rotate-180 text-green' : ''}`} />
+                <ChevronDown size={14} className={`text-black transition-transform duration-200 ${productsDropdown ? 'rotate-180 text-green' : ''}`} />
               </NavLink>
 
               {/* Top-level Dropdown Menu - Clean Names Only */}
@@ -204,10 +204,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/brands"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -218,10 +218,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/clientele"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -232,10 +232,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/industries"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -246,10 +246,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/contact"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
-                    : 'text-text-muted-dark border-transparent hover:text-green'
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
                 }`
               }
             >
@@ -261,10 +261,10 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               <NavLink
                 to="/admin"
                 className={({ isActive }) => 
-                  `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  `whitespace-nowrap text-xs xl:text-[13px] uppercase font-bold tracking-wider transition-colors py-2 border-b-2 ${
                     isActive 
-                      ? 'text-green border-green font-bold' 
-                      : 'text-text-muted-dark border-transparent hover:text-green'
+                      ? 'text-black border-green' 
+                      : 'text-black border-transparent hover:border-black/40'
                   }`
                 }
               >
@@ -328,11 +328,11 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
           onClick={() => setIsOpen(false)}
         >
           <div className="flex flex-col select-none text-right justify-center">
-            <span className="font-sans font-black tracking-wide text-xs sm:text-sm md:text-base lg:text-[15px] xl:text-base whitespace-nowrap leading-tight">
+            <span className="font-sans font-black tracking-tight text-sm sm:text-base md:text-[17px] lg:text-[18px] xl:text-[19px] whitespace-nowrap leading-tight">
               <span className="text-[#65a30d]">ASCENT </span>
               <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
             </span>
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none mt-0.5">
+            <span className="text-[9px] sm:text-[10px] md:text-[11px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none mt-0.5">
               Formerly known as Ascent Control Systems
             </span>
           </div>
