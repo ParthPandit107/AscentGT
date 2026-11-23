@@ -51,7 +51,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     }, 180);
   };
 
-  // VFD / VSD items - just the names as requested
+  // VFD / VSD items - clean names strictly from PPT Slide 4
   const vfdProducts = [
     { name: "HV600 - HVAC&R Drive", slug: "hv600" },
     { name: "U1000 - Low Harmonics VFD", slug: "u1000" },
@@ -65,44 +65,19 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
 
   return (
     <header className="sticky top-0 z-40 w-full bg-light-surface border-b border-border shadow-xs font-body">
-      {/* Full width container to take logo to the far left corner */}
-      <div className="w-full px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8 min-h-[80px] lg:min-h-[88px] xl:min-h-[96px] py-2 flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 h-20 lg:h-22 flex items-center justify-between">
         
-        {/* Far-Left Corner: AGT Logo & 2x Bigger Brand Block */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-2 sm:gap-3 lg:gap-3.5 shrink-0 select-none mr-2 lg:mr-3 xl:mr-4" 
-          onClick={() => setIsOpen(false)}
-        >
-          <img 
-            src={logo} 
-            alt="AGTPL Logo" 
-            className="h-10 sm:h-11 md:h-12 lg:h-13 xl:h-15 2xl:h-17 w-auto object-contain shrink-0" 
-          />
-          <div className="flex flex-col select-none justify-center">
-            {/* Company name 2x bigger than original baseline with responsive fit */}
-            <span className="font-sans font-black tracking-tight text-sm sm:text-base md:text-lg lg:text-[18px] xl:text-[20px] 2xl:text-[26px] whitespace-nowrap leading-tight">
-              <span className="text-[#65a30d]">ASCENT </span>
-              <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
-            </span>
-            {/* Proportionally scaled subtitle */}
-            <span className="text-[8.5px] sm:text-[9.5px] md:text-[10px] lg:text-[11px] xl:text-xs text-[#002060] font-bold tracking-wider whitespace-nowrap leading-none mt-0.5">
-              Formerly known as Ascent Control Systems
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation Links & Search - Vertically Centered & Aligned */}
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
-          <nav className="flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 whitespace-nowrap shrink-0">
+        {/* Left Side: Navigation Links & Search */}
+        <div className="hidden lg:flex items-center gap-3 xl:gap-5 shrink-0">
+          <nav className="flex items-center gap-3.5 xl:gap-5 whitespace-nowrap shrink-0">
             
-            {/* Home */}
+            {/* 1. Home */}
             <NavLink
               to="/"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -110,13 +85,13 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               Home
             </NavLink>
 
-            {/* About Us */}
+            {/* 2. About Us */}
             <NavLink
               to="/about"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -124,17 +99,17 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               About Us
             </NavLink>
 
-            {/* Products & Solutions with Clean Hover Dropdown */}
+            {/* 3. Products & Solutions with Clean Dropdown */}
             <div 
-              className="relative py-1.5"
+              className="relative py-2"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
             >
               <NavLink
                 to="/products"
-                className={`whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 inline-flex items-center gap-1 ${
+                className={`whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
                   isProductsActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`}
               >
@@ -142,7 +117,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                 <ChevronDown size={13} className={`transition-transform duration-200 ${productsDropdown ? 'rotate-180 text-green' : ''}`} />
               </NavLink>
 
-              {/* Top-level Dropdown Menu - Just clean names */}
+              {/* Top-level Dropdown Menu - Clean Names Only */}
               {productsDropdown && (
                 <div 
                   className="absolute left-0 top-full pt-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
@@ -151,7 +126,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                 >
                   <div className="w-52 bg-white border border-border rounded-sm shadow-xl py-1.5 font-sans">
                     
-                    {/* 1. VFD / VSD */}
+                    {/* VFD / VSD */}
                     <div 
                       className="relative"
                       onMouseEnter={handleVfdEnter}
@@ -167,7 +142,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                         <ChevronRight size={14} className="text-text-muted-light group-hover:text-[#65a30d]" />
                       </div>
 
-                      {/* Nested Submenu: 6 VFD / VSD Options - Just clean names */}
+                      {/* Nested Flyout: 6 VFD / VSD Models - Clean Names Only */}
                       {vfdFlyout && (
                         <div 
                           className="absolute left-full top-0 pl-1 z-50 animate-in fade-in duration-150"
@@ -193,7 +168,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                       )}
                     </div>
 
-                    {/* 2. Pumps */}
+                    {/* Pumps */}
                     <Link
                       to="/products?category=Pumps"
                       onClick={() => setProductsDropdown(false)}
@@ -202,7 +177,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                       Pumps
                     </Link>
 
-                    {/* 3. Motors */}
+                    {/* Motors */}
                     <Link
                       to="/products?category=Motors"
                       onClick={() => setProductsDropdown(false)}
@@ -211,7 +186,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                       Motors
                     </Link>
 
-                    {/* 4. Services */}
+                    {/* Services */}
                     <Link
                       to="/products?tab=solutions"
                       onClick={() => setProductsDropdown(false)}
@@ -225,13 +200,13 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               )}
             </div>
 
-            {/* Partners */}
+            {/* 4. Partners */}
             <NavLink
               to="/brands"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -239,13 +214,13 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               Partners
             </NavLink>
 
-            {/* Clientele */}
+            {/* 5. Clientele */}
             <NavLink
               to="/clientele"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -253,11 +228,11 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               Clientele
             </NavLink>
 
-            {/* Industries */}
+            {/* 6. Industries */}
             <NavLink
               to="/industries"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
@@ -267,13 +242,13 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               Industries
             </NavLink>
 
-            {/* Contact */}
+            {/* 7. Contact */}
             <NavLink
               to="/contact"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -286,9 +261,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               <NavLink
                 to="/admin"
                 className={({ isActive }) => 
-                  `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
+                  `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                     isActive 
-                      ? 'text-green border-green' 
+                      ? 'text-green border-green font-bold' 
                       : 'text-text-muted-dark border-transparent hover:text-green'
                   }`
                 }
@@ -299,12 +274,11 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
 
           </nav>
 
-          {/* Actions & Search */}
+          {/* Search Trigger */}
           <div className="flex items-center gap-2 border-l border-border/60 pl-3 shrink-0">
-            {/* Search Trigger */}
             <div className="relative">
               {searchOpen ? (
-                <form onSubmit={handleSearchSubmit} className="flex items-center bg-sky-pale border border-sky-light rounded-sm overflow-hidden px-2 py-1 transition-all w-48">
+                <form onSubmit={handleSearchSubmit} className="flex items-center bg-sky-pale border border-sky-light rounded-sm overflow-hidden px-2 py-1 transition-all w-44">
                   <input
                     type="text"
                     placeholder="Search catalog..."
@@ -323,23 +297,23 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               ) : (
                 <button 
                   onClick={() => setSearchOpen(true)}
-                  className="p-2 text-text-muted-dark hover:text-green transition-colors"
+                  className="p-1.5 text-text-muted-dark hover:text-green transition-colors"
                   title="Search catalog"
                 >
-                  <Search size={18} />
+                  <Search size={16} />
                 </button>
               )}
             </div>
 
-            {/* Quote Basket Button */}
+            {/* Quote Basket */}
             {basket && basket.length > 0 && (
               <button
                 onClick={() => onRequestQuote()}
-                className="flex items-center gap-2 bg-sky-pale border border-sky-light hover:bg-sky/15 text-sky-deep px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer shadow-2xs"
+                className="flex items-center gap-1.5 bg-sky-pale border border-sky-light hover:bg-sky/15 text-sky-deep px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer shadow-2xs"
               >
-                <FileText size={14} className="text-sky" />
-                <span>Quote Basket</span>
-                <span className="bg-sky-deep text-white w-4.5 h-4.5 rounded-full flex items-center justify-center text-[9px] font-bold">
+                <FileText size={13} className="text-sky" />
+                <span>Quote</span>
+                <span className="bg-sky-deep text-white w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-bold">
                   {basket.reduce((sum, item) => sum + item.quantity, 0)}
                 </span>
               </button>
@@ -347,36 +321,78 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
           </div>
         </div>
 
-        {/* Mobile menu toggle & Mobile search trigger */}
-        <div className="flex lg:hidden items-center gap-3">
-          {basket && basket.length > 0 && (
-            <button 
-              onClick={() => onRequestQuote()} 
-              className="relative p-2 text-sky-deep hover:text-green transition-colors"
-              title="View Quote Basket"
-            >
-              <FileText size={20} />
-              <span className="absolute -top-0.5 -right-0.5 bg-sky-deep text-white w-4.5 h-4.5 rounded-full flex items-center justify-center text-[8px] font-bold border border-white">
-                {basket.reduce((sum, item) => sum + item.quantity, 0)}
-              </span>
-            </button>
-          )}
+        {/* Right Side: Company Name after Contact Us, and AGT Logo at the Far-Right Corner (Original Size) */}
+        <Link 
+          to="/" 
+          className="hidden lg:flex items-center gap-3 sm:gap-4 select-none ml-auto shrink-0" 
+          onClick={() => setIsOpen(false)}
+        >
+          <div className="flex flex-col select-none text-right justify-center">
+            <span className="font-sans font-black tracking-wide text-xs sm:text-sm md:text-base lg:text-[15px] xl:text-base whitespace-nowrap leading-tight">
+              <span className="text-[#65a30d]">ASCENT </span>
+              <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
+            </span>
+            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none mt-0.5">
+              Formerly known as Ascent Control Systems
+            </span>
+          </div>
+          <img 
+            src={logo} 
+            alt="AGTPL Logo" 
+            className="h-9 sm:h-11 lg:h-12 w-auto object-contain shrink-0" 
+          />
+        </Link>
 
-          <button 
-            onClick={() => setSearchOpen(!searchOpen)} 
-            className="p-2 text-text-muted-dark hover:text-green"
+        {/* Mobile View: Hamburger on left, Brand block + Logo on right */}
+        <div className="flex lg:hidden items-center justify-between w-full">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-text-dark hover:text-green transition-colors focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            <button 
+              onClick={() => setSearchOpen(!searchOpen)} 
+              className="p-2 text-text-muted-dark hover:text-green"
+            >
+              <Search size={18} />
+            </button>
+
+            {basket && basket.length > 0 && (
+              <button 
+                onClick={() => onRequestQuote()} 
+                className="relative p-2 text-sky-deep hover:text-green transition-colors"
+                title="View Quote Basket"
+              >
+                <FileText size={18} />
+                <span className="absolute -top-0.5 -right-0.5 bg-sky-deep text-white w-4 h-4 rounded-full flex items-center justify-center text-[8px] font-bold border border-white">
+                  {basket.reduce((sum, item) => sum + item.quantity, 0)}
+                </span>
+              </button>
+            )}
+          </div>
+
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 select-none"
+            onClick={() => setIsOpen(false)}
           >
-            <Search size={18} />
-          </button>
-          
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-text-dark hover:text-green transition-colors focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            <div className="flex flex-col text-right justify-center">
+              <span className="font-sans font-black text-[11px] sm:text-xs whitespace-nowrap leading-tight">
+                <span className="text-[#65a30d]">ASCENT </span>
+                <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
+              </span>
+              <span className="text-[7.5px] sm:text-[8.5px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none">
+                Formerly known as Ascent Control Systems
+              </span>
+            </div>
+            <img src={logo} alt="AGTPL Logo" className="h-8 sm:h-9 w-auto object-contain shrink-0" />
+          </Link>
         </div>
+
       </div>
 
       {/* Mobile Search Bar Expand */}
@@ -430,7 +446,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               About Us
             </NavLink>
 
-            {/* Mobile Accordion for Products & Solutions - Just clean names */}
+            {/* Mobile Accordion for Products & Solutions - Just Clean Names */}
             <div className="border border-border/40 rounded-sm overflow-hidden my-1">
               <button
                 type="button"
@@ -542,7 +558,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               className={({ isActive }) => 
                 `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
                   isActive 
-                    ? 'bg-green/10 text-green font-bold' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
                 }`
               }
@@ -556,7 +572,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               className={({ isActive }) => 
                 `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
                   isActive 
-                    ? 'bg-green/10 text-green font-bold' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
                 }`
               }
