@@ -17,6 +17,7 @@ const Solutions = lazy(() => import('./pages/Solutions'));
 const Products = lazy(() => import('./pages/Products'));
 const ProductDetail = lazy(() => import('./pages/ProductDetail'));
 const Brands = lazy(() => import('./pages/Brands'));
+const Clientele = lazy(() => import('./pages/Clientele'));
 const Industries = lazy(() => import('./pages/Industries'));
 const Projects = lazy(() => import('./pages/Projects'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -38,8 +39,12 @@ export default function App() {
   const loadProducts = async () => {
     try {
       const data = await db.getProducts();
-      if (data && Array.isArray(data)) {
-        setProducts(data);
+      if (data && Array.isArray(data) && data.length > 0) {
+        // Merge with defaultProducts so all new catalog items are guaranteed to exist
+        const map = new Map();
+        defaultProducts.forEach(p => map.set(p.id, p));
+        data.forEach(p => map.set(p.id, { ...(map.get(p.id) || {}), ...p }));
+        setProducts(Array.from(map.values()));
       } else {
         setProducts(defaultProducts);
       }
@@ -147,6 +152,8 @@ export default function App() {
                 <Route path="/products" element={<Products onRequestQuote={handleOpenQuote} products={products} />} />
                 <Route path="/products/:id" element={<ProductDetail onRequestQuote={handleOpenQuote} products={products} />} />
                 <Route path="/brands" element={<Brands />} />
+                <Route path="/partners" element={<Brands />} />
+                <Route path="/clientele" element={<Clientele />} />
                 <Route path="/industries" element={<Industries />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/contact" element={<Contact />} />

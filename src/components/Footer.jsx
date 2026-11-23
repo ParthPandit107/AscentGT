@@ -6,12 +6,11 @@ import { siteConfig } from '../config/site';
 
 export default function Footer({ onRequestQuote, isAuthenticated = false }) {
   const footerLinks = [
-    { path: '/solutions', label: 'Solutions' },
-    { path: '/products', label: 'Products' },
+    { path: '/about', label: 'About Us' },
+    { path: '/products', label: 'Products & Solutions' },
     { path: '/brands', label: 'Partners' },
+    { path: '/clientele', label: 'Clientele' },
     { path: '/industries', label: 'Industries' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' }
   ];
 
@@ -49,12 +48,16 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
           {/* Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="bg-white p-1 rounded-xs flex items-center justify-center" style={{ height: '56px', width: '42px' }}>
-                <img src={logo} alt="AGTPL Logo" className="h-full w-full object-contain" />
+              <div className="bg-white p-1.5 rounded-xs flex items-center justify-center h-12 w-auto">
+                <img src={logo} alt="AGT Logo" className="h-full w-auto object-contain" />
               </div>
               <div className="flex flex-col">
-                <span className="font-headings text-white font-bold tracking-widest text-sm leading-tight">ASCENT GREEN</span>
-                <span className="font-body font-normal tracking-[0.25em] text-green-bright text-[8px] leading-none">TECHNOLOGIES PVT LTD</span>
+                <span className="font-sans font-black tracking-wide text-white text-xs leading-tight whitespace-nowrap">
+                  ASCENT GREEN TECHNOLOGIES
+                </span>
+                <span className="font-sans font-semibold tracking-wider text-green-bright text-[9px] leading-none mt-0.5">
+                  PVT. LTD.
+                </span>
               </div>
             </div>
             <p className="text-xs text-sky-light/70 leading-relaxed">

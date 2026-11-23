@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { Menu, X, Search, FileText } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
+import { Menu, X, Search, FileText, ChevronDown, ChevronRight, Cpu } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { siteConfig } from '../config/site';
 
@@ -8,7 +8,15 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [productsDropdown, setProductsDropdown] = useState(false);
+  const [vfdFlyout, setVfdFlyout] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileVfdOpen, setMobileVfdOpen] = useState(false);
+
+  const dropdownTimerRef = useRef(null);
+  const vfdTimerRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -20,115 +28,330 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     }
   };
 
-  const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/solutions', label: 'Solutions' },
-    { path: '/products', label: 'Products' },
-    { path: '/brands', label: 'Partners' },
-    { path: '/industries', label: 'Industries' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' }
+  const handleDropdownEnter = () => {
+    if (dropdownTimerRef.current) clearTimeout(dropdownTimerRef.current);
+    setProductsDropdown(true);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimerRef.current = setTimeout(() => {
+      setProductsDropdown(false);
+      setVfdFlyout(false);
+    }, 180);
+  };
+
+  const handleVfdEnter = () => {
+    if (vfdTimerRef.current) clearTimeout(vfdTimerRef.current);
+    setVfdFlyout(true);
+  };
+
+  const handleVfdLeave = () => {
+    vfdTimerRef.current = setTimeout(() => {
+      setVfdFlyout(false);
+    }, 180);
+  };
+
+  const vfdProducts = [
+    { name: "HV600 - HVAC&R Drive", slug: "hv600", desc: "For HVAC&R - Heating, Ventilation, Airconditioning & Refrigeration" },
+    { name: "U1000 - Low Harmonics VFD", slug: "u1000", desc: "Matrix converter with <5% THD & power regeneration" },
+    { name: "GA700 - Advanced Vector control & IoT Drive", slug: "ga700", desc: "Precision control for induction, PM & SynRM motors" },
+    { name: "GA500-P&F", slug: "ga500-pf", desc: "Compact drive with multi-pump staging & conformal coating" },
+    { name: "Varispeed G7 - 3 Level control method", slug: "varispeed-g7", desc: "World-first 3-level inverter eliminating surge voltage" },
+    { name: "Engineered Panel Solutions", slug: "engineered-panel-solutions", desc: "Turnkey custom automation panels with bypass & filters" },
   ];
 
-  if (isAuthenticated) {
-    navLinks.push({ path: '/admin', label: 'Dashboard' });
-  }
+  const isProductsActive = location.pathname.startsWith('/products');
 
   return (
     <header className="sticky top-0 z-40 w-full bg-light-surface border-b border-border shadow-xs font-body">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 lg:h-24 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 lg:h-22 flex items-center justify-between">
         
         {/* Logo and Brand Block */}
         <Link 
           to="/" 
-          className="group flex items-center h-18 lg:h-24 lg:border-r lg:border-border pr-2 sm:pr-8 mr-1 sm:mr-4 gap-2.5 sm:gap-3.5" 
+          className="flex items-center gap-3 sm:gap-4 shrink-0 select-none mr-3 lg:mr-6" 
           onClick={() => setIsOpen(false)}
         >
-          <img src={logo} alt="AGTPL Logo" className="h-10 lg:h-16 w-auto object-contain transition-transform group-hover:scale-105" />
-          <div className="flex flex-col select-none">
-            <span className="font-headings text-xs xs:text-sm sm:text-base lg:text-base font-extrabold text-text-dark uppercase tracking-wide leading-none">
-              Ascent Green
+          <img 
+            src={logo} 
+            alt="AGTPL Logo" 
+            className="h-9 sm:h-11 lg:h-12 w-auto object-contain" 
+          />
+          <div className="flex flex-col select-none justify-center">
+            <span className="font-sans font-black tracking-wide text-xs sm:text-sm md:text-base lg:text-[15px] xl:text-base whitespace-nowrap leading-tight">
+              <span className="text-[#65a30d]">ASCENT </span>
+              <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
             </span>
-            <span className="font-headings text-[9px] xs:text-[10px] sm:text-xs lg:text-xs font-semibold text-green uppercase tracking-widest leading-none mt-1">
-              Technologies
+            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none mt-0.5">
+              Formerly known as Ascent Control Systems
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
+        {/* Desktop Navigation Links & Search */}
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0">
+          <nav className="flex items-center gap-3.5 xl:gap-5.5 whitespace-nowrap shrink-0">
+            
+            {/* Home */}
             <NavLink
-              key={link.path}
-              to={link.path}
+              to="/"
               className={({ isActive }) => 
-                `text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green' 
+                    ? 'text-green border-green font-bold' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
             >
-              {link.label}
+              Home
             </NavLink>
-          ))}
-        </nav>
 
-        {/* Actions & Search */}
-        <div className="hidden lg:flex items-center gap-4">
-          {/* Search Trigger */}
-          <div className="relative">
-            {searchOpen ? (
-              <form onSubmit={handleSearchSubmit} className="flex items-center bg-sky-pale border border-sky-light rounded-sm overflow-hidden px-2 py-1 transition-all w-48">
-                <input
-                  type="text"
-                  placeholder="Search catalog..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-transparent text-xs text-text-dark focus:outline-none w-full"
-                  autoFocus
-                />
-                <button type="submit" className="text-text-muted-dark hover:text-green">
-                  <Search size={14} />
-                </button>
-                <button type="button" onClick={() => setSearchOpen(false)} className="text-text-muted-dark hover:text-red-500 ml-1">
-                  <X size={14} />
-                </button>
-              </form>
-            ) : (
-              <button 
-                onClick={() => setSearchOpen(true)}
-                className="p-2 text-text-muted-dark hover:text-green transition-colors"
-                title="Search catalog"
+            {/* About Us */}
+            <NavLink
+              to="/about"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`
+              }
+            >
+              About Us
+            </NavLink>
+
+            {/* Products & Solutions with Smooth Hover Dropdown */}
+            <div 
+              className="relative py-2"
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <NavLink
+                to="/products"
+                className={`whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
+                  isProductsActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`}
               >
-                <Search size={16} />
+                <span>Products & Solutions</span>
+                <ChevronDown size={13} className={`transition-transform duration-200 ${productsDropdown ? 'rotate-180 text-green' : ''}`} />
+              </NavLink>
+
+              {/* Top-level Dropdown Menu */}
+              {productsDropdown && (
+                <div 
+                  className="absolute left-0 top-full pt-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                  onMouseEnter={handleDropdownEnter}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="w-56 bg-white border border-border rounded-sm shadow-xl py-1.5 font-sans">
+                    
+                    {/* 1. VFD / VSD (Triggers flyout submenu on hover) */}
+                    <div 
+                      className="relative"
+                      onMouseEnter={handleVfdEnter}
+                      onMouseLeave={handleVfdLeave}
+                    >
+                      <div 
+                        className={`px-4 py-2.5 text-xs font-bold tracking-wide flex items-center justify-between cursor-pointer transition-colors ${
+                          vfdFlyout ? 'bg-[#65a30d]/10 text-[#65a30d]' : 'text-text-dark hover:bg-slate-50 hover:text-[#65a30d]'
+                        }`}
+                        onClick={() => navigate('/products?category=VFD / VSD')}
+                      >
+                        <span className="uppercase">VFD / VSD</span>
+                        <ChevronRight size={14} className="text-text-muted-light group-hover:text-[#65a30d]" />
+                      </div>
+
+                      {/* Nested Submenu: 6 VFD / VSD Options */}
+                      {vfdFlyout && (
+                        <div 
+                          className="absolute left-full top-0 pl-1 z-50 animate-in fade-in duration-150"
+                          onMouseEnter={handleVfdEnter}
+                          onMouseLeave={handleVfdLeave}
+                        >
+                          <div className="w-80 bg-white border border-border rounded-sm shadow-2xl py-2">
+                            <div className="px-4 py-1.5 border-b border-border/50 bg-slate-50/70 mb-1 flex items-center gap-2">
+                              <Cpu size={13} className="text-[#65a30d]" />
+                              <span className="text-[10px] font-bold text-[#002060] uppercase tracking-wider">
+                                VFD / VSD Models
+                              </span>
+                            </div>
+                            {vfdProducts.map((p) => (
+                              <Link
+                                key={p.slug}
+                                to={`/products/${p.slug}`}
+                                onClick={() => {
+                                  setProductsDropdown(false);
+                                  setVfdFlyout(false);
+                                }}
+                                className="block px-4 py-2.5 hover:bg-[#65a30d]/10 transition-colors group"
+                              >
+                                <div className="text-xs font-bold text-text-dark group-hover:text-[#65a30d] transition-colors leading-tight">
+                                  {p.name}
+                                </div>
+                                <div className="text-[10px] text-text-muted-light line-clamp-1 mt-0.5 font-normal">
+                                  {p.desc}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* 2. Pumps */}
+                    <Link
+                      to="/products?category=Pumps"
+                      onClick={() => setProductsDropdown(false)}
+                      className="block px-4 py-2.5 text-xs font-bold tracking-wide text-text-dark hover:bg-slate-50 hover:text-[#65a30d] transition-colors uppercase"
+                    >
+                      Pumps
+                    </Link>
+
+                    {/* 3. Motors */}
+                    <Link
+                      to="/products?category=Motors"
+                      onClick={() => setProductsDropdown(false)}
+                      className="block px-4 py-2.5 text-xs font-bold tracking-wide text-text-dark hover:bg-slate-50 hover:text-[#65a30d] transition-colors uppercase"
+                    >
+                      Motors
+                    </Link>
+
+                    {/* 4. Services */}
+                    <Link
+                      to="/products?tab=solutions"
+                      onClick={() => setProductsDropdown(false)}
+                      className="block px-4 py-2.5 text-xs font-bold tracking-wide text-text-dark hover:bg-slate-50 hover:text-[#65a30d] transition-colors uppercase border-t border-border/40 mt-1"
+                    >
+                      Services
+                    </Link>
+
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Partners */}
+            <NavLink
+              to="/brands"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`
+              }
+            >
+              Partners
+            </NavLink>
+
+            {/* Clientele */}
+            <NavLink
+              to="/clientele"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`
+              }
+            >
+              Clientele
+            </NavLink>
+
+            {/* Industries */}
+            <NavLink
+              to="/industries"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`
+              }
+            >
+              Industries
+            </NavLink>
+
+            {/* Contact */}
+            <NavLink
+              to="/contact"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark border-transparent hover:text-green'
+                }`
+              }
+            >
+              Contact
+            </NavLink>
+
+            {/* Admin (if authenticated) */}
+            {isAuthenticated && (
+              <NavLink
+                to="/admin"
+                className={({ isActive }) => 
+                  `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                    isActive 
+                      ? 'text-green border-green font-bold' 
+                      : 'text-text-muted-dark border-transparent hover:text-green'
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+            )}
+
+          </nav>
+
+          {/* Actions & Search */}
+          <div className="flex items-center gap-2 border-l border-border/60 pl-3 shrink-0">
+            {/* Search Trigger */}
+            <div className="relative">
+              {searchOpen ? (
+                <form onSubmit={handleSearchSubmit} className="flex items-center bg-sky-pale border border-sky-light rounded-sm overflow-hidden px-2 py-1 transition-all w-48">
+                  <input
+                    type="text"
+                    placeholder="Search catalog..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="bg-transparent text-xs text-text-dark focus:outline-none w-full"
+                    autoFocus
+                  />
+                  <button type="submit" className="text-text-muted-dark hover:text-green">
+                    <Search size={14} />
+                  </button>
+                  <button type="button" onClick={() => setSearchOpen(false)} className="text-text-muted-dark hover:text-red-500 ml-1">
+                    <X size={14} />
+                  </button>
+                </form>
+              ) : (
+                <button 
+                  onClick={() => setSearchOpen(true)}
+                  className="p-2 text-text-muted-dark hover:text-green transition-colors"
+                  title="Search catalog"
+                >
+                  <Search size={16} />
+                </button>
+              )}
+            </div>
+
+            {/* Quote Basket Button */}
+            {basket && basket.length > 0 && (
+              <button
+                onClick={() => onRequestQuote()}
+                className="flex items-center gap-2 bg-sky-pale border border-sky-light hover:bg-sky/15 text-sky-deep px-4 py-2 text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer shadow-2xs"
+              >
+                <FileText size={14} className="text-sky" />
+                <span>Quote Basket</span>
+                <span className="bg-sky-deep text-white w-4.5 h-4.5 rounded-full flex items-center justify-center text-[9px] font-bold">
+                  {basket.reduce((sum, item) => sum + item.quantity, 0)}
+                </span>
               </button>
             )}
           </div>
-
-
-
-          {/* Quote Basket Button */}
-          {basket && basket.length > 0 && (
-            <button
-              onClick={() => onRequestQuote()}
-              className="flex items-center gap-2 bg-sky-pale border border-sky-light hover:bg-sky/15 text-sky-deep px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all cursor-pointer shadow-2xs"
-            >
-              <FileText size={14} className="text-sky" />
-              <span>Quote Basket</span>
-              <span className="bg-sky-deep text-white w-4.5 h-4.5 rounded-full flex items-center justify-center text-[9px] font-bold">
-                {basket.reduce((sum, item) => sum + item.quantity, 0)}
-              </span>
-            </button>
-          )}
-
-          <button
-            onClick={() => onRequestQuote('Consultation Service')}
-            className="bg-green hover:bg-green-bright text-white px-5 py-2.5 text-[10px] font-bold uppercase tracking-wider rounded-sm transition-colors cursor-pointer shadow-xs"
-          >
-            Request Consultation
-          </button>
         </div>
 
         {/* Mobile menu toggle & Mobile search trigger */}
@@ -184,36 +407,169 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
 
       {/* Mobile Drawer (Hamburger Menu) */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-light-surface border-b border-border shadow-md animate-fade-in">
-          <nav className="flex flex-col px-4 pt-2 pb-6 space-y-2">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) => 
-                  `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors ${
-                    isActive 
-                      ? 'bg-green/10 text-green font-bold' 
-                      : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-            
-            <hr className="border-border my-3" />
-            
-            <button
-              onClick={() => {
-                setIsOpen(false);
-                onRequestQuote('Consultation Service');
-              }}
-              className="w-full bg-green hover:bg-green-bright text-white py-3 font-bold uppercase text-xs tracking-wider rounded-sm transition-colors text-center cursor-pointer"
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-light-surface border-b border-border shadow-md animate-fade-in max-h-[80vh] overflow-y-auto">
+          <nav className="flex flex-col px-4 pt-2 pb-6 space-y-1">
+            <NavLink
+              to="/"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
             >
-              Request Consultation
-            </button>
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/about"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              About Us
+            </NavLink>
+
+            {/* Mobile Accordion for Products & Solutions */}
+            <div className="border border-border/40 rounded-sm overflow-hidden my-1">
+              <button
+                type="button"
+                onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-semibold uppercase tracking-wider text-text-muted-dark hover:bg-sky-pale hover:text-green"
+              >
+                <span>Products & Solutions</span>
+                <ChevronDown size={16} className={`transition-transform duration-200 ${mobileProductsOpen ? 'rotate-180 text-green' : ''}`} />
+              </button>
+
+              {mobileProductsOpen && (
+                <div className="bg-slate-50 px-3 py-2 space-y-1.5 border-t border-border/30 text-xs">
+                  {/* VFD Sub-accordion */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setMobileVfdOpen(!mobileVfdOpen)}
+                      className="w-full flex items-center justify-between py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
+                    >
+                      <span>VFD / VSD</span>
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${mobileVfdOpen ? 'rotate-180 text-[#65a30d]' : ''}`} />
+                    </button>
+                    {mobileVfdOpen && (
+                      <div className="pl-3 py-1 space-y-1 border-l-2 border-[#65a30d]/40 my-1">
+                        {vfdProducts.map(p => (
+                          <Link
+                            key={p.slug}
+                            to={`/products/${p.slug}`}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setMobileProductsOpen(false);
+                            }}
+                            className="block py-1 text-xs text-text-muted-dark hover:text-[#65a30d]"
+                          >
+                            {p.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <Link
+                    to="/products?category=Pumps"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setMobileProductsOpen(false);
+                    }}
+                    className="block py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
+                  >
+                    Pumps
+                  </Link>
+
+                  <Link
+                    to="/products?category=Motors"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setMobileProductsOpen(false);
+                    }}
+                    className="block py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
+                  >
+                    Motors
+                  </Link>
+
+                  <Link
+                    to="/products?tab=solutions"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setMobileProductsOpen(false);
+                    }}
+                    className="block py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
+                  >
+                    Services
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <NavLink
+              to="/brands"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              Partners
+            </NavLink>
+
+            <NavLink
+              to="/clientele"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              Clientele
+            </NavLink>
+
+            <NavLink
+              to="/industries"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              Industries
+            </NavLink>
+
+            <NavLink
+              to="/contact"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'bg-green/10 text-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              Contact
+            </NavLink>
           </nav>
         </div>
       )}

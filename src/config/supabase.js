@@ -16,20 +16,31 @@ if (isSupabaseConfigured) {
   }
 }
 
-// Helper to initialize local storage mock data
+// Helper to initialize local storage mock data with latest static catalog as authoritative baseline
 const getLocalProducts = () => {
-  const localData = localStorage.getItem('agt_products_catalog');
-  if (localData) {
-    try {
-      const parsed = JSON.parse(localData);
-      if (Array.isArray(parsed)) return parsed;
-    } catch (e) {
-      console.error('Failed to parse local catalog data, resetting...');
+  // Clear obsolete legacy cached product catalog if present
+  try {
+    if (localStorage.getItem('agt_products_catalog')) {
+      localStorage.removeItem('agt_products_catalog');
     }
+  } catch (e) {}
+
+  let overrides = {};
+  try {
+    const localOverrides = localStorage.getItem('agt_products_overrides');
+    if (localOverrides) {
+      overrides = JSON.parse(localOverrides);
+    }
+  } catch (e) {
+    console.error('Failed to parse local catalog overrides:', e);
   }
-  // Seed initial catalog data
-  localStorage.setItem('agt_products_catalog', JSON.stringify(defaultProducts));
-  return defaultProducts;
+
+  return defaultProducts.map(p => {
+    if (overrides[p.id]) {
+      return { ...p, ...overrides[p.id] };
+    }
+    return p;
+  });
 };
 
 // Database Abstraction Interface
@@ -93,14 +104,17 @@ export const db = {
       }
     } else {
       // Mock LocalStorage update
-      const localList = getLocalProducts();
-      const updatedList = localList.map(p => {
-        if (p.id === productId) {
-          return { ...p, ...updates };
+      try {
+        const localOverrides = localStorage.getItem('agt_products_overrides');
+        let overrides = {};
+        if (localOverrides) {
+          overrides = JSON.parse(localOverrides);
         }
-        return p;
-      });
-      localStorage.setItem('agt_products_catalog', JSON.stringify(updatedList));
+        overrides[productId] = { ...(overrides[productId] || {}), ...updates };
+        localStorage.setItem('agt_products_overrides', JSON.stringify(overrides));
+      } catch (e) {
+        console.error('Failed to save product override:', e);
+      }
       return { success: true, mockUpdated: true };
     }
   },

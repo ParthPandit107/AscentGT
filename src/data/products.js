@@ -1,4 +1,285 @@
+import hv600Img from '../assets/products/hv600.png';
+import u1000Img from '../assets/products/u1000.png';
+import ga700Img from '../assets/products/ga700.png';
+import ga500pfImg from '../assets/products/ga500-pf.png';
+import varispeedG7Img from '../assets/products/varispeed-g7.png';
+import engineeredPanelsImg from '../assets/products/engineered-panel-solutions.png';
+
 export const products = [
+  // ==========================================
+  // VFD / VSD (Variable Frequency Drives)
+  // ==========================================
+  {
+    id: "hv600",
+    name: "HV600 HVAC&R Drive",
+    brand: "AGTPL / Partner Systems",
+    category: "VFD / VSD",
+    modelNumber: "HV600 Series (1.5 kW - 160 kW)",
+    shortDescription: "Dedicated variable frequency drive engineered for HVAC building automation, fan, and pump control with native BACnet, Modbus, and Metasys protocols.",
+    fullDescription: "The HV600 variable frequency drive is engineered specifically for commercial and industrial heating, ventilation, air conditioning, and refrigeration (HVAC&R) building automation. Available in IP20, IP55, and protected chassis enclosures, the HV600 features an intuitive Hand-Off-Auto LCD keypad, high-visibility 360° status ring, integrated real-time clock, and conformal coated boards. It delivers exceptional energy efficiency and seamless integration with Building Management Systems (BMS).",
+    price: "Contact for Quote",
+    availability: "In Stock / Engineered Delivery",
+    image: hv600Img,
+    specs: {
+      "Voltage / Power Ratings": "480V Class: 1.5 kW to 160 kW (3-Phase)",
+      "Enclosure Protection": "IP20 / UL Type 1, IP55 / UL Type 12 (washdown-tight)",
+      "Operating Temperature": "-10°C to +60°C (with derating)",
+      "Motor Control Methods": "V/f, Open Loop Vector (OLV) for Induction & PM Motors",
+      "Embedded Protocols": "BACnet MS/TP, Modbus RTU, Johnson Controls Metasys N2",
+      "Network Options": "BACnet/IP, LonWorks, Modbus TCP/IP, EtherNet/IP",
+      "Safety Standards": "Safe Torque Off (STO), SIL3, PLe compliance",
+      "Operator Keypad": "Hand-Off-Auto keypad with backlit LCD & Status Ring",
+      "Coating Standard": "IEC 60721-3-3 Class 3C2 / 3S2 conformal coating"
+    },
+    features: [
+      "Pre-configured HVAC application macros for supply fans, return fans, cooling towers, and circulating pumps",
+      "DriveWizard Mobile app support via Bluetooth for rapid commissioning, parameter backup, and diagnostics",
+      "High-visibility 360° Status Ring for immediate visual drive health indication across large plant rooms",
+      "Independent dual PID controllers for auxiliary dampers, valve control, and differential pressure regulation",
+      "Safe programming capability without requiring main three-phase AC power",
+      "Side-by-side mounting design significantly minimizes control cabinet volume"
+    ],
+    applications: [
+      "Chilled water and condenser water circulation pumps",
+      "Air handling units (AHU) and supply / exhaust ventilation fans",
+      "Cooling tower fan staging and variable speed draft fans",
+      "Data center cooling infrastructure and cleanroom climate systems"
+    ],
+    accessories: [
+      "Bluetooth-enabled LCD Hand-Off-Auto operator keypad",
+      "BACnet/IP & EtherNet/IP multi-protocol communication cards",
+      "Output AC reactors and dV/dt motor protection filters",
+      "NEMA 1 conduit entry kits and flange mount kits"
+    ],
+    brochureUrl: "/downloads/hv600_datasheet.pdf",
+    datasheetUrl: "/downloads/hv600_datasheet.pdf"
+  },
+  {
+    id: "u1000",
+    name: "U1000 Low Harmonics VFD",
+    brand: "AGTPL / Partner Systems",
+    category: "VFD / VSD",
+    modelNumber: "U1000 Matrix Converter Series (3.7 kW - 400 kW)",
+    shortDescription: "Ultra-low harmonics matrix converter drive providing clean power (<5% THD) and 4-quadrant regeneration without external harmonic filters or braking resistors.",
+    fullDescription: "The U1000 is an advanced variable frequency drive based on cutting-edge direct AC-to-AC matrix conversion technology. By eliminating the electrolytic DC bus capacitor, the U1000 achieves sinusoidal input currents with less than 5% total harmonic distortion (THD) and near-unity power factor across broad operating ranges. It provides continuous 4-quadrant power regeneration directly back to the electrical network, cutting energy costs and reducing thermal load in electrical switchgear rooms.",
+    price: "Contact for Quote",
+    availability: "Available on Project Order",
+    image: u1000Img,
+    specs: {
+      "Voltage / Power Ratings": "3-Phase 200V (3.7 to 45 kW) / 400V Class (up to 400 kW)",
+      "Input Current Distortion": "<5% THDi at rated load (exceeds IEEE 519 compliance)",
+      "Power Factor": "Near Unity (0.98 or higher across broad load range)",
+      "Power Regeneration": "Continuous 4-Quadrant regenerative braking to grid",
+      "Bus Technology": "Direct AC-to-AC matrix conversion (No DC bus capacitors)",
+      "Functional Safety": "Safe Torque Off (SIL3 / PLe Category 3)",
+      "Enclosure Protection": "IP00 / IP20 Protected Chassis",
+      "Calculated MTBF": "28 Years estimated service life",
+      "Short Circuit Rating": "100 kA SCCR with integrated input branch circuit fuses"
+    },
+    features: [
+      "Eliminates the need for 12/18-pulse transformers, active front ends, or bulky passive harmonic filters",
+      "Full four-quadrant power regeneration routes mechanical braking energy back to the plant electrical network",
+      "Eco-Mode optimizes operating voltage dynamically to match motor load, maximizing energy savings",
+      "Substantially lower heat rejection inside MCC rooms compared to conventional regenerative drive setups",
+      "Built-in input branch circuit fuses deliver high short-circuit withstand rating (100 kA SCCR)",
+      "Compact installation footprint saves valuable electrical room floor space"
+    ],
+    applications: [
+      "Centrifuges, centrifugally loaded decanters, and test benches",
+      "Overhead industrial cranes, hoists, and continuous descent conveyors",
+      "High-inertia industrial blowers, kiln drives, and induced draft fans",
+      "Hospital and commercial facilities with strict harmonic distortion constraints"
+    ],
+    accessories: [
+      "Remote graphical LCD operator interface",
+      "Modbus TCP / PROFINET / EtherNet/IP industrial gateway cards",
+      "Floor-mount footprint adapter kits",
+      "Input line monitoring transformers"
+    ],
+    brochureUrl: "/downloads/u1000_datasheet.pdf",
+    datasheetUrl: "/downloads/u1000_datasheet.pdf"
+  },
+  {
+    id: "ga700",
+    name: "GA700 - Advanced Vector Control & IoT Drive",
+    brand: "AGTPL / Partner Systems",
+    category: "VFD / VSD",
+    modelNumber: "GA700 Series (0.4 kW - 315 kW)",
+    shortDescription: "High-performance vector AC drive combining precision control for Induction, PM, and Synchronous Reluctance motors with cloud-ready IoT integration.",
+    fullDescription: "The GA700 provides exceptional motor control capability across the most demanding industrial processes. Engineered to run standard induction motors, permanent magnet motors, and synchronous reluctance motors with open- or closed-loop precision, it includes integrated functional safety (SIL3), high-resolution graphical keypad, 24V auxiliary power input, and seamless mobile Bluetooth configuration. Designed for maximum plant uptime and minimal maintenance.",
+    price: "Contact for Quote",
+    availability: "In Stock / Prompt Dispatch",
+    image: ga700Img,
+    specs: {
+      "Capacity Range": "200V / 400V Class: 0.4 kW to 315 kW",
+      "Motor Compatibility": "Induction (IM), Permanent Magnet (SPM/IPM), Synchronous Reluctance (SynRM)",
+      "Control Methods": "Closed Loop Vector, Open Loop Vector, V/f, PM Vector",
+      "Overload Rating": "Heavy Duty: 150% for 60s, Normal Duty: 110% for 60s",
+      "Embedded Safety": "Safe Torque Off (SIL3 / PLe Cat 3)",
+      "Auxiliary Control Power": "Embedded 24VDC input for uninterrupted communications",
+      "Communication Protocols": "Modbus RTU embedded; EtherNet/IP, PROFINET, Modbus TCP, EtherCAT options",
+      "DC Reactor": "Built-in DC Reactor for 30 kW ND and above",
+      "Environmental Rating": "Coated PCBs complying with IEC 60721-3-3 (3C3, 3S3)"
+    },
+    features: [
+      "One single drive platform to operate induction, permanent magnet, and synchronous reluctance motors",
+      "Fast-acting current limiters prevent nuisance overcurrent trips during sudden mechanical load spikes",
+      "DriveWizard Mobile & Cloud platform enables rapid setup, parameter archiving, and remote diagnostics",
+      "24V auxiliary power input keeps network communication online even when main 3-phase power is disconnected",
+      "Integrated Safe Torque Off (SIL3/PLe) simplifies machine safety designs and reduces external contactors",
+      "12-pulse version option provides cost-effective harmonic mitigation on larger capacities"
+    ],
+    applications: [
+      "Extruders, plastic injection molding, and rubber mills",
+      "Heavy overhead cranes, hoists, and harbor container lifters",
+      "Industrial sorting conveyors, bucket elevators, and crushers",
+      "Pulp & paper processing, printing lines, and coil winders"
+    ],
+    accessories: [
+      "High-resolution LCD keypad with Bluetooth connectivity",
+      "Dynamic braking transistors and braking resistor units",
+      "Speed feedback PG encoder interface cards",
+      "EMC line noise filters and dV/dt output reactors"
+    ],
+    brochureUrl: "/downloads/ga700_datasheet.pdf",
+    datasheetUrl: "/downloads/ga700_datasheet.pdf"
+  },
+  {
+    id: "ga500-pf",
+    name: "GA500-P&F Drive",
+    brand: "AGTPL / Partner Systems",
+    category: "VFD / VSD",
+    modelNumber: "GA500-P&F Series (0.1 kW - 30 kW)",
+    shortDescription: "Ultra-compact variable speed drive engineered for HVAC, pump, and fan applications with embedded multi-pump logic and conformal protection.",
+    fullDescription: "The GA500-P&F delivers industrial-grade vector performance in an exceptionally compact footprint. Purpose-designed for pump and fan flow regulation in HVAC systems, commercial water pumping, and refrigeration, it features built-in multi-pump staging, sleep/wake algorithms, pipe fill protection, and robust conformal coating as standard for reliable operation in humid or dust-prone environments.",
+    price: "Contact for Quote",
+    availability: "In Stock",
+    image: ga500pfImg,
+    specs: {
+      "Voltage / Power Range": "Single-Phase 200V (0.1-4 kW), 3-Phase 400V (0.4-30 kW)",
+      "Motor Types": "Induction Motors (IM), Permanent Magnet (PM), SynRM",
+      "Control Mode": "Open Loop Current Vector, V/f Control",
+      "Enclosure & Protection": "IP20 / NEMA 1 with IEC 60721-3-3 (3C2, 3S2) conformal coating",
+      "Functional Safety": "SIL3 (IEC 62061), PLe (ISO 13849-1) Safe Torque Off",
+      "Fieldbus Connectivity": "Embedded Modbus RTU (RS-485), optional Ethernet adapters",
+      "Operating Temperature": "-10°C to +50°C without derating (up to +60°C with derating)",
+      "USB Interface": "No-power programming port via standard USB cable"
+    },
+    features: [
+      "Integrated multi-pump staging logic manages lead-lag rotation and duty sharing without a PLC",
+      "Dedicated pipe fill and anti-water-hammer sequencing protects municipal and building piping networks",
+      "Compact chassis dimensions enable side-by-side DIN-rail mounting with minimal enclosure footprint",
+      "No-power USB programming enables parameter cloning straight out of the box prior to installation",
+      "Advanced open-loop vector algorithms deliver high starting torque without shaft encoders",
+      "Energy-optimization mode continually minimizes motor flux for maximum operating efficiency"
+    ],
+    applications: [
+      "Hydro-pneumatic booster pumping systems",
+      "Submersible borehole pumps and wastewater transfer stations",
+      "Commercial HVAC fan coil units and cooling tower circulation",
+      "Agricultural irrigation pumping and greenhouse ventilation"
+    ],
+    accessories: [
+      "Remote LED / LCD keypad extensions",
+      "Compact EMC input line filters",
+      "DIN-rail mounting brackets",
+      "Modbus TCP / PROFINET communication modules"
+    ],
+    brochureUrl: "/downloads/ga500_datasheet.pdf",
+    datasheetUrl: "/downloads/ga500_datasheet.pdf"
+  },
+  {
+    id: "varispeed-g7",
+    name: "Varispeed G7 - 3 Level control method",
+    brand: "AGTPL / Partner Systems",
+    category: "VFD / VSD",
+    modelNumber: "Varispeed G7 Series (0.4 kW - 300 kW)",
+    shortDescription: "World's premier 400V 3-level low-voltage inverter eliminating motor surge voltage, protecting motor winding insulation, and minimizing acoustic noise.",
+    fullDescription: "The Varispeed G7 is an innovative low-voltage inverter utilizing a patented 3-level dual-bridge power architecture. By halving output voltage step increments (reducing dV/dt), the G7 effectively eliminates terminal surge voltage spikes on motor windings, preventing insulation breakdown even over extended cable lengths up to 300 meters without external output reactors. It delivers ultra-quiet acoustic motor operation and low micro-surge leakage currents across capacities from 0.4 kW to 300 kW.",
+    price: "Contact for Quote",
+    availability: "Available on Project Order",
+    image: varispeedG7Img,
+    specs: {
+      "Voltage / Power Range": "200V / 400V Class: 0.4 kW to 300 kW",
+      "Inverter Architecture": "3-Level Dual-Bridge Inverter topology",
+      "Output dV/dt Reduction": "Over 50% lower voltage rate-of-rise vs. conventional 2-level drives",
+      "Motor Cable Run": "Up to 300+ meters without AC output reactors or sine-wave filters",
+      "Acoustic Noise": "Significantly reduced audible motor pitch and magnetic hum",
+      "Overload Capacity": "Heavy Duty: 150% for 60 seconds, 200% peak torque",
+      "Operator Keypad": "Backlit 5-line x 16-character LCD display supporting multiple languages",
+      "International Marks": "UL / cUL listed, CE certified"
+    },
+    features: [
+      "3-level power conversion topology prevents micro-surge insulation damage on general-purpose motors",
+      "Substantially suppresses high-frequency motor bearing currents and shaft voltages, extending bearing life",
+      "High-speed speed-search function instantly catches coasting motors during momentary grid voltage dips",
+      "Precise torque limiting algorithms protect driving mechanisms against unexpected mechanical binding",
+      "Allows retrofit of older standard-insulated motors without expensive motor replacements or line filters",
+      "Backlit multi-language LCD keypad includes easy-to-use parameter copy and verify functions"
+    ],
+    applications: [
+      "Deep-well submersible pumps with long cable runs",
+      "Textile spinning frames, ring frames, and yarn winders",
+      "Chemical manufacturing and mining facilities with long distance motor cabling",
+      "Acoustically sensitive institutional environments like hospitals and luxury hotels"
+    ],
+    accessories: [
+      "Remote mount cable kits for LCD keypad",
+      "Profibus-DP, DeviceNet, and Modbus communication adapters",
+      "Braking chopper units and dynamic braking resistors",
+      "Flange mounting kits for external heatsink cooling"
+    ],
+    brochureUrl: "/downloads/varispeed_g7_datasheet.pdf",
+    datasheetUrl: "/downloads/varispeed_g7_datasheet.pdf"
+  },
+  {
+    id: "engineered-panel-solutions",
+    name: "Engineered Panel Solutions",
+    brand: "AGTPL Engineering",
+    category: "VFD / VSD",
+    modelNumber: "AGT-EPS Custom Automation Enclosures",
+    shortDescription: "Turnkey custom-engineered VFD panels, MCC enclosures, and automation cabinets built with bypass switchgear, harmonic filters, and SCADA integration.",
+    fullDescription: "Ascent Green Technologies Pvt. Ltd. engineers, fabricates, and commissions turnkey variable frequency drive panels and motor control centers (MCC) built to precise industrial requirements. Compliant with IEC 60439 and IEC 60529 standards, AGTPL panels incorporate robust CRCA sheet steel construction, physical segregation of power, control, and communication buses for guaranteed EMI noise immunity, forced cooling or climate control, and comprehensive 100% factory acceptance testing.",
+    price: "Custom Engineered / Quote on Request",
+    availability: "Built to Project Specifications",
+    image: engineeredPanelsImg,
+    specs: {
+      "Design Compliance": "IEC 60439-1 (Low Voltage Switchgear), IEC 60529, IEC 61800-2",
+      "Ingress Protection": "IP42 / IP52 / IP54 / IP55 (Floor-standing or Wall-mounting)",
+      "Power Capacity": "Custom configurations from 0.75 kW up to 1200 kW",
+      "Sheet Steel Thickness": "1.6mm / 2.0mm CRCA sheet steel with 7-tank powder coating (RAL 7035)",
+      "Bypass Architecture": "Manual / Automatic 3-Contactor Bypass with mechanical & electrical interlocks",
+      "Harmonic Mitigation": "Active harmonic filters (AHF), passive tuned filters, or multi-pulse arrangements",
+      "Thermal Management": "Forced filtered ventilation, exhaust roof fans, or industrial panel air conditioners",
+      "Quality Standard": "100% Factory Acceptance Tested (FAT) with comprehensive insulation & load tests"
+    },
+    features: [
+      "Complete turnkey fabrication and commissioning executed in-house by AGTPL automation engineers",
+      "Strict physical separation of power lines, control cabling, and digital communications ensures noise-free signals",
+      "Comprehensive instrumentation including multifunction digital energy meters, status beacons, and HMI screens",
+      "Bypass arrangements ensure uninterrupted motor operation during VFD servicing or maintenance intervals",
+      "Seamless communication integration with plant DCS, SCADA, or Building Management Systems via Modbus/Ethernet",
+      "Complete engineering documentation package supplied including SLD, GA drawings, and test certificates"
+    ],
+    applications: [
+      "Commercial HVAC primary and secondary chilled water pumping stations",
+      "Municipal water treatment plants, intake wells, and STP/ETP lift stations",
+      "Cement kiln ID fans, raw mill exhaust fans, and baghouse blowers",
+      "Automated plant conveyor lines, material handling systems, and mixing tanks"
+    ],
+    accessories: [
+      "Color touchscreen HMI panels (7-inch to 15-inch)",
+      "Industrial panel air conditioning units for high-ambient environments",
+      "Active Harmonic Filter (AHF) add-on modules",
+      "Automatic changeover PLC controllers for duty / standby systems"
+    ],
+    brochureUrl: "/downloads/engineered_panel_brochure.pdf",
+    datasheetUrl: "/downloads/engineered_panel_datasheet.pdf"
+  },
+
+  // ==========================================
+  // MOTORS
+  // ==========================================
   {
     id: "abb-ie3-motor",
     name: "ABB Low Voltage IE3 Motor",
@@ -7,9 +288,9 @@ export const products = [
     modelNumber: "M3BP 160 MLA",
     shortDescription: "Ultra-reliable low-voltage process performance motor with IE3 premium efficiency class, perfect for severe duty industries.",
     fullDescription: "ABB's process performance cast iron motors are designed for harsh environments and demanding applications. Combining premium IE3 efficiency with robust construction, these motors ensure low lifecycle cost, high reliability, and excellent energy savings.",
-    price: "₹85,000",
+    price: "Contact for Quote",
     availability: "In Stock",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=600", // Placeholder but high quality
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=600",
     specs: {
       "Output Power": "11 kW (15 HP)",
       "Speed": "1475 RPM",
@@ -51,7 +332,7 @@ export const products = [
     modelNumber: "M3BP 200 MLA",
     shortDescription: "Super premium efficiency IE4 cast iron motor offering maximum energy savings and minimized greenhouse gas emissions.",
     fullDescription: "ABB's IE4 super premium efficiency motors represent the vanguard of sustainable industrial performance. Designed for applications with high run-times, these motors deliver substantial energy cost reductions, running cooler and lasting longer than standard machinery.",
-    price: "₹1,45,000",
+    price: "Contact for Quote",
     availability: "Available on Order (2-3 Weeks)",
     image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&q=80&w=600",
     specs: {
@@ -87,90 +368,10 @@ export const products = [
     brochureUrl: "/downloads/abb_ie4_motor_brochure.pdf",
     datasheetUrl: "/downloads/abb_ie4_motor_datasheet.pdf"
   },
-  {
-    id: "yaskawa-ga700-vfd",
-    name: "Yaskawa GA700 High Performance Drive",
-    brand: "Yaskawa",
-    category: "Drives",
-    modelNumber: "GA70C4023ABA",
-    shortDescription: "High-performance AC drive combining powerful motor control with advanced network integration and ease of use.",
-    fullDescription: "The Yaskawa GA700 is a versatile, high-performance industrial AC drive designed to control induction, permanent magnet, and synchronous reluctance motors. With built-in functional safety, cloud-ready mobile apps, and absolute programming flexibility, it is the ultimate motor control solution.",
-    price: "₹62,000",
-    availability: "In Stock",
-    image: "https://images.unsplash.com/photo-1597491829127-ec457b91d6b2?auto=format&fit=crop&q=80&w=600",
-    specs: {
-      "Rated Current": "23 Amps",
-      "Applicable Motor Capacity": "11 kW (15 HP) Heavy Duty",
-      "Input Voltage": "380-480V, 3-Phase",
-      "Control Method": "V/f, Open Loop Vector, Closed Loop Vector",
-      "Safety Rating": "SIL3 / PLe (STO)",
-      "Communication": "Modbus RTU, EtherNet/IP, PROFINET, EtherCAT options",
-      "Enclosure": "IP20 / NEMA 1 Type"
-    },
-    features: [
-      "Flexible motor control: runs induction, PM, and SynRM motors",
-      "Smart programming with intuitive keypad and mobile app connection via Bluetooth",
-      "Embedded functional safety reducing component count in system design",
-      "Integrated braking transistor for high cyclic deceleration rates",
-      "Coated circuit boards as standard for dust and moisture resistance"
-    ],
-    applications: [
-      "Hoists, cranes, and lifting systems",
-      "Conveyor networks and sorting machines",
-      "Fans, blowers, and industrial ventilation",
-      "Compressors and positive displacement pumps"
-    ],
-    accessories: [
-      "LCD Operator interface with Bluetooth",
-      "Braking resistors",
-      "Input/Output reactors for harmonic mitigation",
-      "Feedback encoder PG cards"
-    ],
-    brochureUrl: "/downloads/yaskawa_ga700_brochure.pdf",
-    datasheetUrl: "/downloads/yaskawa_ga700_datasheet.pdf"
-  },
-  {
-    id: "yaskawa-v1000-vfd",
-    name: "Yaskawa V1000 Compact Drive",
-    brand: "Yaskawa",
-    category: "Drives",
-    modelNumber: "V1000-4A0009FAA",
-    shortDescription: "General-purpose micro-vector drive offering exceptional reliability, compact design, and simple installation.",
-    fullDescription: "Yaskawa's V1000 is a compact, high-quality vector drive designed for general-purpose application. Featuring sensorless vector control, dual-rating (Normal/Heavy duty), and a design lifetime of over 10 years, it provides unmatched reliability in a space-saving footprint.",
-    price: "₹34,000",
-    availability: "In Stock",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=600",
-    specs: {
-      "Rated Current": "9.2 Amps",
-      "Applicable Motor Capacity": "3.7 kW (5 HP) Heavy Duty",
-      "Input Voltage": "380-480V, 3-Phase",
-      "Control Method": "Open Loop Vector, V/f Control",
-      "Design Life": "10+ Years",
-      "Communication": "Modbus RTU (Standard), DeviceNet, Profibus options",
-      "Enclosure": "IP20 / NEMA 1"
-    },
-    features: [
-      "Ultra-compact dimensions with side-by-side mounting capability",
-      "High starting torque (200% at 0.5Hz) using open loop vector control",
-      "Quick-setup parameters for plug-and-play installation",
-      "Built-in functional safety (Safe Torque Off - STO)",
-      "Maintenance monitors notify when fans or capacitors need replacement"
-    ],
-    applications: [
-      "Packaging machines and labeling systems",
-      "Conveyors and small material handlers",
-      "Food processing mixers and grinders",
-      "Small pumps and circulation loops"
-    ],
-    accessories: [
-      "Remote LED display operator keypad",
-      "EMC line noise filter",
-      "Braking units",
-      "DIN rail mounting kits"
-    ],
-    brochureUrl: "/downloads/yaskawa_v1000_brochure.pdf",
-    datasheetUrl: "/downloads/yaskawa_v1000_datasheet.pdf"
-  },
+
+  // ==========================================
+  // PUMPS
+  // ==========================================
   {
     id: "ksb-megachem-pump",
     name: "KSB MegaChem Standard Chemical Pump",
@@ -179,7 +380,7 @@ export const products = [
     modelNumber: "MegaChem 100-250",
     shortDescription: "Horizontal single-stage volute casing pump designed to process aggressive, volatile, and viscous chemicals.",
     fullDescription: "The KSB MegaChem is a premium standard chemical pump engineered to meet the highest safety and process demands. Designed according to ISO 2858 and ISO 5199 standards, it handles highly aggressive chemicals, hydrocarbons, and viscous fluids with absolute containment and efficiency.",
-    price: "₹1,95,000",
+    price: "Contact for Quote",
     availability: "Available on Order (4 Weeks)",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=600",
     specs: {
@@ -221,7 +422,7 @@ export const products = [
     modelNumber: "Amarex KRT F 100-250",
     shortDescription: "Submersible motor pump for raw municipal and industrial wastewater containing solids, fibers, and sludge.",
     fullDescription: "The KSB Amarex KRT is a robust submersible motor pump designed for handling untreated sewage, wastewater containing long fibers, solids, and sludge. Equipped with clog-resistant impellers and explosion-proof motors, it ensures block-free operation in the toughest wet-well conditions.",
-    price: "₹2,10,000",
+    price: "Contact for Quote",
     availability: "Available on Order (3 Weeks)",
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=600",
     specs: {

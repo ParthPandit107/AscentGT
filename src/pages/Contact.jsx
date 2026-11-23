@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle2, ExternalLink } from 'lucide-react';
 import { siteConfig } from '../config/site';
 
 import useSeo from '../hooks/useSeo';
 
 export default function Contact() {
   useSeo(
-    'Contact Ascent Green Technologies | AGTPL Help Desk',
-    'Contact our sales or engineering help desk. Visit our corporate office in Gandhinagar, Gujarat, or get a quotation via phone, email, or WhatsApp.'
+    'Contact Us | Ascent Green Technologies (AGTPL)',
+    'Connect with our engineering and technical sales teams at our Corporate Office in Faridabad or Branch Office in Mumbai. Direct phone, email, and location directions.'
   );
 
   const [formData, setFormData] = useState({
@@ -138,37 +138,28 @@ ${formData.message}
                   <MapPin size={18} />
                 </div>
                 <div>
-                  <h4 className="font-headings text-text-dark font-bold uppercase tracking-wider text-[10px] mb-1">Corporate Address</h4>
-                  <p>{siteConfig.address}</p>
+                  <h4 className="font-headings text-text-dark font-bold uppercase tracking-wider text-[10px] mb-1">Corporate Office (Faridabad)</h4>
+                  <p className="font-medium text-text-dark">{siteConfig.corporateOffice.address}</p>
+                  <div className="mt-2 text-[11px] space-y-1">
+                    <p><strong>Mr. Sanjay Pandit (Director):</strong> <a href="tel:+919891977727" className="text-sky-deep hover:underline">+91 9891977727</a> | <a href="mailto:sanjaypandit@ascentgtpl.com" className="text-sky-deep hover:underline">sanjaypandit@ascentgtpl.com</a></p>
+                    <p><strong>Mr. Rahul Bhat (Director):</strong> <a href="tel:+919999822616" className="text-sky-deep hover:underline">+91 9999822616</a> | <a href="mailto:rahulbhat@ascentgtpl.com" className="text-sky-deep hover:underline">rahulbhat@ascentgtpl.com</a></p>
+                  </div>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 border border-sky-light/50 bg-sky-pale text-sky-deep flex items-center justify-center rounded-sm flex-shrink-0 mt-0.5">
+                  <MapPin size={18} />
+                </div>
+                <div>
+                  <h4 className="font-headings text-text-dark font-bold uppercase tracking-wider text-[10px] mb-1">Branch Office (Mumbai)</h4>
+                  <p className="font-medium text-text-dark">{siteConfig.branchOffice.address}</p>
+                  <div className="mt-2 text-[11px]">
+                    <p><strong>Mrs. Shweta Saxena (Branch Head):</strong> <a href="tel:+918928159155" className="text-sky-deep hover:underline">+91 8928159155</a> | <a href="mailto:shwetasaxena@ascentgtpl.com" className="text-sky-deep hover:underline">shwetasaxena@ascentgtpl.com</a></p>
+                  </div>
                 </div>
               </li>
               
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-sky-light/50 bg-sky-pale text-sky-deep flex items-center justify-center rounded-sm flex-shrink-0 mt-0.5">
-                  <Phone size={18} />
-                </div>
-                <div>
-                  <h4 className="font-headings text-text-dark font-bold uppercase tracking-wider text-[10px] mb-1">Call Center</h4>
-                  <p className="font-semibold text-text-dark hover:text-sky-deep transition-colors">
-                    <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
-                  </p>
-                  <p className="text-[10px] text-text-muted-light">Sales, audits & service bookings</p>
-                </div>
-              </li>
-
-              <li className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-sky-light/50 bg-sky-pale text-sky-deep flex items-center justify-center rounded-sm flex-shrink-0 mt-0.5">
-                  <Mail size={18} />
-                </div>
-                <div>
-                  <h4 className="font-headings text-text-dark font-bold uppercase tracking-wider text-[10px] mb-1">Email Support</h4>
-                  <p className="font-semibold text-text-dark hover:text-sky-deep transition-colors">
-                    <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-                  </p>
-                  <p className="text-[10px] text-text-muted-light">For formal proposals & catalog submissions</p>
-                </div>
-              </li>
-
               <li className="flex items-start gap-4">
                 <div className="w-10 h-10 border border-sky-light/50 bg-sky-pale text-sky-deep flex items-center justify-center rounded-sm flex-shrink-0 mt-0.5">
                   <Clock size={18} />
@@ -318,17 +309,31 @@ ${formData.message}
         </div>
 
         {/* Google Maps Embed Frame */}
-        <div className="w-full bg-light-surface border border-border p-4 rounded-sm shadow-xs overflow-hidden h-96">
-          <iframe
-            src={siteConfig.mapsEmbedUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Office Location Map"
-          ></iframe>
+        <div className="w-full bg-light-surface border border-border p-4 rounded-sm shadow-xs overflow-hidden space-y-3">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-xs font-bold text-text-dark uppercase tracking-wider">Corporate Office Location</span>
+            <a
+              href={siteConfig.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-deep hover:text-green transition-colors"
+            >
+              <span>Open in Google Maps</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+          <div className="w-full h-96 overflow-hidden rounded-xs border border-border/60">
+            <iframe
+              src={siteConfig.mapsEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Royal Plaza, Sector 35, Faridabad Office Location"
+            ></iframe>
+          </div>
         </div>
 
       </div>

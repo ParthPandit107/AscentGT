@@ -17,7 +17,15 @@ export default function ProductDetail({ onRequestQuote, products = staticProduct
   );
 
   useEffect(() => {
-    const found = products.find(p => p.id === id);
+    const list = products && products.length > 0 ? products : staticProducts;
+    const cleanId = id.toLowerCase().replace(/^yaskawa-|-vfd$/g, '');
+    const found = 
+      list.find(p => p.id === id) ||
+      list.find(p => p.id.toLowerCase() === id.toLowerCase()) ||
+      list.find(p => p.id.toLowerCase().replace(/^yaskawa-|-vfd$/g, '') === cleanId) ||
+      staticProducts.find(p => p.id === id) ||
+      staticProducts.find(p => p.id.toLowerCase() === id.toLowerCase());
+
     if (found) {
       setProduct(found);
     } else {
@@ -66,13 +74,13 @@ I need technical details, quotation proposal, and delivery timeline.`;
         {/* Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-light-surface border border-border p-6 sm:p-8 rounded-sm shadow-xs mb-12">
           
-          {/* Gallery placeholder */}
+          {/* Product Image */}
           <div className="space-y-4">
-            <div className="h-96 rounded-sm overflow-hidden bg-sky-pale border border-sky-light">
+            <div className="h-96 rounded-sm overflow-hidden bg-white border border-border flex items-center justify-center p-6 shadow-inner">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="max-h-full max-w-full object-contain"
               />
             </div>
             {/* Small thumbnails */}

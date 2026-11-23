@@ -36,11 +36,11 @@ export default function Preloader() {
 
         {/* Brand Text */}
         <div className="space-y-1">
-          <h2 className="font-headings text-white font-bold tracking-widest text-xl leading-tight">
-            ASCENT GREEN
+          <h2 className="font-sans font-black tracking-wide text-white text-base sm:text-lg md:text-xl leading-tight whitespace-nowrap">
+            ASCENT GREEN TECHNOLOGIES PVT. LTD.
           </h2>
-          <p className="font-body font-normal tracking-[0.25em] text-green-bright text-[10px] uppercase">
-            Technologies Pvt Ltd
+          <p className="font-sans font-medium tracking-wider text-green-bright text-xs">
+            Formerly known as Ascent Control Systems
           </p>
         </div>
 

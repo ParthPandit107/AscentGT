@@ -1,12 +1,30 @@
 export const siteConfig = {
   name: "AGTPL",
-  fullName: "Ascent Green Technologies Pvt Ltd",
-  tagline: "Industrial Automation & Engineering Solutions",
-  whatsappNumber: "+918882030724", // Client can change this value easily later
-  email: "info@agtpl.com",
-  inquiryEmail: "parthpanditpk@gmail.com",
-  phone: "+91-8882030724",
-  address: "Plot No. 42, GIDC Industrial Estate, Sector 25, Gandhinagar - 382025, Gujarat, India",
+  fullName: "ASCENT GREEN TECHNOLOGIES PVT. LTD.",
+  formerName: "Formerly known as Ascent Control Systems",
+  tagline: "ENERGY • AUTOMATION • SUSTAINABILITY",
+  subTagline: "Integrated Drives • Premium Efficiency Motors • Pumping Systems",
+  whatsappNumber: "+919891977727",
+  email: "sanjaypandit@ascentgtpl.com",
+  inquiryEmail: "sanjaypandit@ascentgtpl.com",
+  phone: "+91 9891977727",
+  corporateOffice: {
+    title: "Corporate Office",
+    address: "SCF-1, First Floor, Royal Plaza, Ashoka Enclave Main, Sector 35, Faridabad, Haryana – 121003",
+    directors: [
+      { name: "Mr. Sanjay Pandit", role: "Director", phone: "+91 9891977727", email: "sanjaypandit@ascentgtpl.com" },
+      { name: "Mr. Rahul Bhat", role: "Director", phone: "+91 9999822616", email: "rahulbhat@ascentgtpl.com" }
+    ]
+  },
+  branchOffice: {
+    title: "Branch Office",
+    address: "Parel, Mumbai, Maharashtra",
+    contacts: [
+      { name: "Mrs. Shweta Saxena", role: "Branch Head", phone: "+91 8928159155", email: "shwetasaxena@ascentgtpl.com" }
+    ]
+  },
+  address: "SCF-1, First Floor, Royal Plaza, Ashoka Enclave Main, Sector 35, Faridabad, Haryana – 121003",
   hours: "Monday - Saturday: 9:00 AM - 6:30 PM (Closed on Sundays)",
-  mapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.4338871340156!2d72.64673897587841!3d23.227289508688463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2b9f9e578c77%3A0x673e449c25f6c8d7!2sGIDC%20Sector%2025!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+  mapsUrl: "https://maps.app.goo.gl/Efh5URXg7kuerPPLA",
+  mapsEmbedUrl: "https://maps.google.com/maps?q=Royal+Plaza,+Ashoka+Enclave+Main,+Sector+35,+Faridabad,+Haryana+121003&t=&z=15&ie=UTF8&iwloc=&output=embed"
 };
