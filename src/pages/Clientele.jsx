@@ -9,7 +9,7 @@ export default function Clientele() {
   );
 
   return (
-    <div className="w-full font-body bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <div className="w-full font-body bg-light-bg py-16 sm:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
         {/* Title matching Slide 7 */}
@@ -20,17 +20,17 @@ export default function Clientele() {
           <div className="w-16 h-1 bg-green mx-auto mt-4"></div>
         </div>
 
-        {/* Clean Logo Grid - Just the Logos, matching Slide 7 */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center">
+        {/* Clean Logo Grid - Just the Logos without boundaries/cards, matching Slide 7 */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-10 items-center justify-items-center">
           {clients.map((client) => (
             <div
               key={client.id}
-              className="w-full h-28 sm:h-32 bg-white border border-border/70 rounded-xs p-4 flex items-center justify-center shadow-2xs hover:border-sky-deep/40 hover:shadow-xs transition-all"
+              className="w-full h-20 sm:h-24 md:h-28 flex items-center justify-center p-2 sm:p-3 group"
             >
               <img
                 src={client.logo}
                 alt={`${client.name} logo`}
-                className="max-h-full max-w-full object-contain"
+                className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
