@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Search, FileText, ChevronDown, ChevronRight, Cpu } from 'lucide-react';
+import { Menu, X, Search, FileText, ChevronDown, ChevronRight } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { siteConfig } from '../config/site';
 
@@ -51,54 +51,58 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     }, 180);
   };
 
+  // VFD / VSD items - just the names as requested
   const vfdProducts = [
-    { name: "HV600 - HVAC&R Drive", slug: "hv600", desc: "For HVAC&R - Heating, Ventilation, Airconditioning & Refrigeration" },
-    { name: "U1000 - Low Harmonics VFD", slug: "u1000", desc: "Matrix converter with <5% THD & power regeneration" },
-    { name: "GA700 - Advanced Vector control & IoT Drive", slug: "ga700", desc: "Precision control for induction, PM & SynRM motors" },
-    { name: "GA500-P&F", slug: "ga500-pf", desc: "Compact drive with multi-pump staging & conformal coating" },
-    { name: "Varispeed G7 - 3 Level control method", slug: "varispeed-g7", desc: "World-first 3-level inverter eliminating surge voltage" },
-    { name: "Engineered Panel Solutions", slug: "engineered-panel-solutions", desc: "Turnkey custom automation panels with bypass & filters" },
+    { name: "HV600 - HVAC&R Drive", slug: "hv600" },
+    { name: "U1000 - Low Harmonics VFD", slug: "u1000" },
+    { name: "GA700 - Advanced Vector control & IoT Drive", slug: "ga700" },
+    { name: "GA500-P&F", slug: "ga500-pf" },
+    { name: "Varispeed G7 - 3 Level control method", slug: "varispeed-g7" },
+    { name: "Engineered Panel Solutions", slug: "engineered-panel-solutions" },
   ];
 
   const isProductsActive = location.pathname.startsWith('/products');
 
   return (
     <header className="sticky top-0 z-40 w-full bg-light-surface border-b border-border shadow-xs font-body">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 lg:h-22 flex items-center justify-between">
+      {/* Full width container to take logo to the far left corner */}
+      <div className="w-full px-3 sm:px-4 lg:px-5 xl:px-6 2xl:px-8 min-h-[80px] lg:min-h-[88px] xl:min-h-[96px] py-2 flex items-center justify-between">
         
-        {/* Logo and Brand Block */}
+        {/* Far-Left Corner: AGT Logo & 2x Bigger Brand Block */}
         <Link 
           to="/" 
-          className="flex items-center gap-3 sm:gap-4 shrink-0 select-none mr-3 lg:mr-6" 
+          className="flex items-center gap-2 sm:gap-3 lg:gap-3.5 shrink-0 select-none mr-2 lg:mr-3 xl:mr-4" 
           onClick={() => setIsOpen(false)}
         >
           <img 
             src={logo} 
             alt="AGTPL Logo" 
-            className="h-9 sm:h-11 lg:h-12 w-auto object-contain" 
+            className="h-10 sm:h-11 md:h-12 lg:h-13 xl:h-15 2xl:h-17 w-auto object-contain shrink-0" 
           />
           <div className="flex flex-col select-none justify-center">
-            <span className="font-sans font-black tracking-wide text-xs sm:text-sm md:text-base lg:text-[15px] xl:text-base whitespace-nowrap leading-tight">
+            {/* Company name 2x bigger than original baseline with responsive fit */}
+            <span className="font-sans font-black tracking-tight text-sm sm:text-base md:text-lg lg:text-[18px] xl:text-[20px] 2xl:text-[26px] whitespace-nowrap leading-tight">
               <span className="text-[#65a30d]">ASCENT </span>
               <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
             </span>
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none mt-0.5">
+            {/* Proportionally scaled subtitle */}
+            <span className="text-[8.5px] sm:text-[9.5px] md:text-[10px] lg:text-[11px] xl:text-xs text-[#002060] font-bold tracking-wider whitespace-nowrap leading-none mt-0.5">
               Formerly known as Ascent Control Systems
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links & Search */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0">
-          <nav className="flex items-center gap-3.5 xl:gap-5.5 whitespace-nowrap shrink-0">
+        {/* Desktop Navigation Links & Search - Vertically Centered & Aligned */}
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
+          <nav className="flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 whitespace-nowrap shrink-0">
             
             {/* Home */}
             <NavLink
               to="/"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -110,9 +114,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/about"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -120,17 +124,17 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               About Us
             </NavLink>
 
-            {/* Products & Solutions with Smooth Hover Dropdown */}
+            {/* Products & Solutions with Clean Hover Dropdown */}
             <div 
-              className="relative py-2"
+              className="relative py-1.5"
               onMouseEnter={handleDropdownEnter}
               onMouseLeave={handleDropdownLeave}
             >
               <NavLink
                 to="/products"
-                className={`whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
+                className={`whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 inline-flex items-center gap-1 ${
                   isProductsActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`}
               >
@@ -138,16 +142,16 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                 <ChevronDown size={13} className={`transition-transform duration-200 ${productsDropdown ? 'rotate-180 text-green' : ''}`} />
               </NavLink>
 
-              {/* Top-level Dropdown Menu */}
+              {/* Top-level Dropdown Menu - Just clean names */}
               {productsDropdown && (
                 <div 
                   className="absolute left-0 top-full pt-1.5 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="w-56 bg-white border border-border rounded-sm shadow-xl py-1.5 font-sans">
+                  <div className="w-52 bg-white border border-border rounded-sm shadow-xl py-1.5 font-sans">
                     
-                    {/* 1. VFD / VSD (Triggers flyout submenu on hover) */}
+                    {/* 1. VFD / VSD */}
                     <div 
                       className="relative"
                       onMouseEnter={handleVfdEnter}
@@ -163,20 +167,14 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                         <ChevronRight size={14} className="text-text-muted-light group-hover:text-[#65a30d]" />
                       </div>
 
-                      {/* Nested Submenu: 6 VFD / VSD Options */}
+                      {/* Nested Submenu: 6 VFD / VSD Options - Just clean names */}
                       {vfdFlyout && (
                         <div 
                           className="absolute left-full top-0 pl-1 z-50 animate-in fade-in duration-150"
                           onMouseEnter={handleVfdEnter}
                           onMouseLeave={handleVfdLeave}
                         >
-                          <div className="w-80 bg-white border border-border rounded-sm shadow-2xl py-2">
-                            <div className="px-4 py-1.5 border-b border-border/50 bg-slate-50/70 mb-1 flex items-center gap-2">
-                              <Cpu size={13} className="text-[#65a30d]" />
-                              <span className="text-[10px] font-bold text-[#002060] uppercase tracking-wider">
-                                VFD / VSD Models
-                              </span>
-                            </div>
+                          <div className="w-76 bg-white border border-border rounded-sm shadow-2xl py-1.5">
                             {vfdProducts.map((p) => (
                               <Link
                                 key={p.slug}
@@ -185,14 +183,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                                   setProductsDropdown(false);
                                   setVfdFlyout(false);
                                 }}
-                                className="block px-4 py-2.5 hover:bg-[#65a30d]/10 transition-colors group"
+                                className="block px-4 py-2.5 text-xs font-semibold text-text-dark hover:bg-[#65a30d]/10 hover:text-[#65a30d] transition-colors whitespace-nowrap"
                               >
-                                <div className="text-xs font-bold text-text-dark group-hover:text-[#65a30d] transition-colors leading-tight">
-                                  {p.name}
-                                </div>
-                                <div className="text-[10px] text-text-muted-light line-clamp-1 mt-0.5 font-normal">
-                                  {p.desc}
-                                </div>
+                                {p.name}
                               </Link>
                             ))}
                           </div>
@@ -236,9 +229,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/brands"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -250,9 +243,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/clientele"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -264,9 +257,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/industries"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -278,9 +271,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/contact"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                   isActive 
-                    ? 'text-green border-green font-bold' 
+                    ? 'text-green border-green' 
                     : 'text-text-muted-dark border-transparent hover:text-green'
                 }`
               }
@@ -293,9 +286,9 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               <NavLink
                 to="/admin"
                 className={({ isActive }) => 
-                  `whitespace-nowrap text-[11px] xl:text-xs uppercase font-semibold tracking-wider transition-colors py-2 border-b-2 ${
+                  `whitespace-nowrap text-[10.5px] xl:text-[11.5px] 2xl:text-xs uppercase font-bold tracking-wider transition-colors py-1.5 border-b-2 ${
                     isActive 
-                      ? 'text-green border-green font-bold' 
+                      ? 'text-green border-green' 
                       : 'text-text-muted-dark border-transparent hover:text-green'
                   }`
                 }
@@ -333,7 +326,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                   className="p-2 text-text-muted-dark hover:text-green transition-colors"
                   title="Search catalog"
                 >
-                  <Search size={16} />
+                  <Search size={18} />
                 </button>
               )}
             </div>
@@ -437,7 +430,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               About Us
             </NavLink>
 
-            {/* Mobile Accordion for Products & Solutions */}
+            {/* Mobile Accordion for Products & Solutions - Just clean names */}
             <div className="border border-border/40 rounded-sm overflow-hidden my-1">
               <button
                 type="button"
@@ -449,7 +442,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               </button>
 
               {mobileProductsOpen && (
-                <div className="bg-slate-50 px-3 py-2 space-y-1.5 border-t border-border/30 text-xs">
+                <div className="bg-slate-50 px-3 py-2 space-y-1 border-t border-border/30 text-xs">
                   {/* VFD Sub-accordion */}
                   <div>
                     <button
