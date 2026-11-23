@@ -75,25 +75,13 @@ I need technical details, quotation proposal, and delivery timeline.`;
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-light-surface border border-border p-6 sm:p-8 rounded-sm shadow-xs mb-12">
           
           {/* Product Image */}
-          <div className="space-y-4">
-            <div className="h-96 rounded-sm overflow-hidden bg-white border border-border flex items-center justify-center p-6 shadow-inner">
+          <div className="flex items-center justify-center">
+            <div className="w-full h-96 sm:h-[420px] rounded-sm overflow-hidden bg-white border border-border flex items-center justify-center p-6 shadow-inner">
               <img
                 src={product.image}
                 alt={product.name}
                 className="max-h-full max-w-full object-contain"
               />
-            </div>
-            {/* Small thumbnails */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="h-24 rounded-sm border border-sky-light/40 overflow-hidden bg-sky-pale/20 cursor-pointer">
-                <img src={product.image} alt="Detail" className="w-full h-full object-cover hover:opacity-80" />
-              </div>
-              <div className="h-24 rounded-sm border border-border overflow-hidden bg-sky-pale/20 flex items-center justify-center text-text-muted-dark text-[10px] font-bold">
-                Specifications
-              </div>
-              <div className="h-24 rounded-sm border border-border overflow-hidden bg-sky-pale/20 flex items-center justify-center text-text-muted-dark text-[10px] font-bold">
-                Dimensions
-              </div>
             </div>
           </div>
 
