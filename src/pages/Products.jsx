@@ -114,14 +114,12 @@ Please send me technical specifications and quote details.`;
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-green/10 border border-green/20 text-green px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Industrial Equipment &amp; Engineered Systems
-          </div>
-          <h1 className="font-headings text-3xl sm:text-4xl font-bold text-text-dark leading-tight">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
+          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark tracking-wide uppercase">
             Products &amp; Solutions
           </h1>
-          <p className="text-sm text-text-muted-light max-w-xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 bg-green mx-auto mt-4"></div>
+          <p className="text-sm text-text-muted-light max-w-xl mx-auto leading-relaxed pt-2">
             Authorized supply of low-voltage motors, variable frequency drives, precision pumps, and turnkey engineered panel packages.
           </p>
         </div>
@@ -155,82 +153,6 @@ Please send me technical specifications and quote details.`;
         {/* ================= SECTION 1: PRODUCTS CATALOG ================= */}
         {activeTab === 'products' && (
           <div>
-            {/* Filters and Search Bar Container */}
-            <div className="bg-light-surface border border-border p-6 rounded-sm mb-8 shadow-xs grid grid-cols-1 lg:grid-cols-4 gap-4 items-center">
-              {/* Search Input */}
-              <div className="relative">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted-light">
-                  <Search size={16} />
-                </span>
-                <input
-                  type="text"
-                  placeholder="Search name, model..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 text-xs border border-border rounded-sm focus:outline-none focus:border-sky bg-white text-text-dark"
-                />
-              </div>
-
-              {/* Brand Filter */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-muted-light font-bold uppercase tracking-wider flex-shrink-0">Brand:</span>
-                <select
-                  value={selectedBrand}
-                  onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full px-3 py-2 text-xs border border-border rounded-sm focus:outline-none focus:border-sky bg-white text-text-dark"
-                >
-                  {brands.map(b => (
-                    <option key={b} value={b}>{b}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Category Filter */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-muted-light font-bold uppercase tracking-wider flex-shrink-0">Category:</span>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full px-3 py-2 text-xs border border-border rounded-sm focus:outline-none focus:border-sky bg-white text-text-dark"
-                >
-                  {categories.map(c => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Sorting Filter */}
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-text-muted-light font-bold uppercase tracking-wider flex-shrink-0">Sort:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full px-3 py-2 text-xs border border-border rounded-sm focus:outline-none focus:border-sky bg-white text-text-dark"
-                >
-                  <option value="name-asc">Name (A-Z)</option>
-                  <option value="name-desc">Name (Z-A)</option>
-                  <option value="brand">Brand</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Results count & Clear filters indicator */}
-            <div className="flex items-center justify-between mb-6 text-xs text-text-muted-dark font-medium">
-              <span>Showing {sortedProducts.length} certified items</span>
-              {(searchQuery || selectedBrand !== 'All' || selectedCategory !== 'All') && (
-                <button
-                  onClick={() => {
-                    setSearchQuery('');
-                    setSelectedBrand('All');
-                    setSelectedCategory('All');
-                  }}
-                  className="text-green hover:underline cursor-pointer"
-                >
-                  Clear all filters
-                </button>
-              )}
-            </div>
-
             {/* Grid List */}
             {sortedProducts.length === 0 ? (
               <div className="bg-light-surface border border-border p-12 text-center rounded-sm">

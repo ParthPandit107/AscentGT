@@ -66,9 +66,6 @@ export default function About() {
       <section className="bg-dark-bg text-white py-20 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-linear-to-r from-dark-bg via-dark-surface to-dark-bg opacity-90"></div>
         <div className="relative max-w-4xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 bg-green/20 border border-green/30 text-green-bright px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Company Profile
-          </div>
           <h1 className="font-headings text-3xl sm:text-5xl font-bold leading-tight">
             Ascent Green Technologies Pvt. Ltd.
           </h1>

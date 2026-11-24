@@ -24,13 +24,11 @@ export default function Projects() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-sky-pale border border-sky-light text-sky-deep px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Case Studies
-          </div>
-          <h1 className="font-headings text-4xl font-normal text-text-dark leading-tight">
-            Our Signature Projects & Success Stories
+          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark tracking-wide uppercase leading-tight">
+            Signature Projects &amp; Track Record
           </h1>
-          <p className="text-sm text-text-muted-light max-w-lg mx-auto">
+          <div className="w-16 h-1 bg-green mx-auto"></div>
+          <p className="text-sm text-text-muted-light max-w-lg mx-auto pt-2">
             Explore how we deployed premium ABB, Yaskawa, and KSB machinery to solve client problems and save energy.
           </p>
         </div>

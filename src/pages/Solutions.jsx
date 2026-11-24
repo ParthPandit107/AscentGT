@@ -25,13 +25,11 @@ export default function Solutions({ onRequestQuote }) {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-sky-pale border border-sky-light text-sky-deep px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Our Expertise
-          </div>
-          <h1 className="font-headings text-4xl font-normal text-text-dark leading-tight">
-            Integrated Industrial Engineering & Automation Solutions
+          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark tracking-wide uppercase leading-tight">
+            Automation &amp; Engineered Solutions
           </h1>
-          <p className="text-sm text-text-muted-light max-w-xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 bg-green mx-auto"></div>
+          <p className="text-sm text-text-muted-light max-w-xl mx-auto leading-relaxed pt-2">
             Delivering authorized equipment supply and systems engineering for manufacturing, municipal water, and process automation plants.
           </p>
         </div>

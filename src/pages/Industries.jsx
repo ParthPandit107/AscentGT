@@ -17,13 +17,11 @@ export default function Industries() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-green/10 border border-green/20 text-green px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-            Sectors We Serve
-          </div>
-          <h1 className="font-headings text-4xl font-normal text-text-dark leading-tight">
+          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark tracking-wide uppercase leading-tight">
             Tailored Engineering for Demanding Industries
           </h1>
-          <p className="text-sm text-text-muted-light max-w-lg mx-auto">
+          <div className="w-16 h-1 bg-green mx-auto"></div>
+          <p className="text-sm text-text-muted-light max-w-lg mx-auto pt-2">
             From municipal water pump arrays to cement plant retrofits, we design systems specifically for your sector's requirements.
           </p>
         </div>
