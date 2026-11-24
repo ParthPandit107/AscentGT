@@ -97,22 +97,25 @@ I need technical details, quotation proposal, and delivery timeline.`;
                 <span className="text-[10px] font-bold text-text-muted-dark uppercase tracking-wider">{product.category}</span>
               </div>
               <h1 className="font-headings text-3xl sm:text-4xl font-normal text-text-dark leading-tight">{product.name}</h1>
-              <p className="text-sm font-mono text-text-muted-light font-bold">Model Number: {product.modelNumber}</p>
+              <div className="space-y-1 pt-1 font-mono text-xs sm:text-sm">
+                <p className="text-text-muted-light font-bold">
+                  Model Number: <span className="text-text-dark">{product.modelNumber}</span>
+                </p>
+                {product.rating && (
+                  <p className="text-text-muted-light font-bold">
+                    Rating: <span className="text-text-dark">{product.rating}</span>
+                  </p>
+                )}
+              </div>
             </div>
 
             <p className="text-xs sm:text-sm text-text-muted-light leading-relaxed">
               {product.fullDescription}
             </p>
 
-            <div className="grid grid-cols-2 gap-4 border-t border-b border-border/60 py-4 text-xs">
-              <div>
-                <span className="text-text-muted-light block font-semibold uppercase tracking-wider text-[9px] mb-1">Availability</span>
-                <span className={`font-bold ${product.availability.includes('In Stock') ? 'text-green' : 'text-yellow-600'}`}>{product.availability}</span>
-              </div>
-              <div>
-                <span className="text-text-muted-light block font-semibold uppercase tracking-wider text-[9px] mb-1">Estimated Pricing</span>
-                <span className="font-bold text-text-dark text-sm">{product.price}</span>
-              </div>
+            <div className="border-t border-b border-border/60 py-4 text-xs">
+              <span className="text-text-muted-light block font-semibold uppercase tracking-wider text-[9px] mb-1">Estimated Pricing</span>
+              <span className="font-bold text-text-dark text-base">{product.price}</span>
             </div>
 
             {/* CTAs */}
@@ -146,15 +149,6 @@ I need technical details, quotation proposal, and delivery timeline.`;
                 >
                   <FileText size={16} />
                   Download Brochure (PDF)
-                </a>
-                <span className="w-1.5 h-1.5 bg-border rounded-full self-center hidden sm:block"></span>
-                <a
-                  href={product.datasheetUrl}
-                  download
-                  className="flex items-center gap-1.5 text-sky-deep hover:text-green transition-colors"
-                >
-                  <FileText size={16} />
-                  Technical Datasheet (PDF)
                 </a>
               </div>
             </div>

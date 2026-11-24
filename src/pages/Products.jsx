@@ -208,6 +208,11 @@ Please send me technical specifications and quote details.`;
                         <p className="text-[10px] font-mono text-text-muted-dark mt-1">
                           Model: {product.modelNumber}
                         </p>
+                        {product.rating && (
+                          <p className="text-[10px] font-mono text-text-muted-dark">
+                            Rating: {product.rating}
+                          </p>
+                        )}
                       </div>
 
                       <p className="text-xs text-text-muted-light leading-relaxed flex-1">
