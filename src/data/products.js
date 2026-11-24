@@ -4,6 +4,9 @@ import ga700Img from '../assets/products/ga700.png';
 import ga500pfImg from '../assets/products/ga500-pf.png';
 import varispeedG7Img from '../assets/products/varispeed-g7.png';
 import engineeredPanelsImg from '../assets/products/engineered-panel-solutions.png';
+import { pumps, pumpReferenceProjects, pumpSubCategories } from './pumps';
+
+export { pumps, pumpReferenceProjects, pumpSubCategories };
 
 export const products = [
   // ==========================================
@@ -378,92 +381,7 @@ export const products = [
   },
 
   // ==========================================
-  // PUMPS
+  // PUMPS (KSB Authorized Pumping Systems)
   // ==========================================
-  {
-    id: "ksb-megachem-pump",
-    name: "KSB MegaChem Standard Chemical Pump",
-    brand: "KSB",
-    category: "Pumps",
-    modelNumber: "MegaChem 100-250",
-    rating: "Max Flow 350 m³/h, Head 110m",
-    shortDescription: "Horizontal single-stage volute casing pump designed to process aggressive, volatile, and viscous chemicals.",
-    fullDescription: "The KSB MegaChem is a premium standard chemical pump engineered to meet the highest safety and process demands. Designed according to ISO 2858 and ISO 5199 standards, it handles highly aggressive chemicals, hydrocarbons, and viscous fluids with absolute containment and efficiency.",
-    price: "Contact for Quote",
-    availability: "Available on Order (4 Weeks)",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=600",
-    specs: {
-      "Max Flow Rate": "350 m³/h",
-      "Max Discharge Head": "110 meters",
-      "Operating Temperature": "-30°C to +300°C",
-      "Max Operating Pressure": "16 bar",
-      "Casing Material": "Stainless Steel 1.4408 (CF8M) / Cast Steel",
-      "Shaft Seal": "Single / Double Mechanical Seal",
-      "Impeller Type": "Closed Impeller"
-    },
-    features: [
-      "Complies fully with ISO 2858 and ISO 5199 chemical pump specifications",
-      "Heavy-duty shaft with minimized deflection increases mechanical seal life",
-      "Back pull-out design allows impeller inspection without piping removal",
-      "Corrosion-resistant materials handle aggressive acids, alkalis, and solvents",
-      "Heating jacket options available for high-viscosity media handling"
-    ],
-    applications: [
-      "Chemical manufacturing and oil processing",
-      "Petrochemical and gas refining",
-      "Pharmaceutical production facilities",
-      "Industrial process heat loops"
-    ],
-    accessories: [
-      "Double cartridge mechanical seals",
-      "Seal support flush systems (API Plan 11/53)",
-      "Bearing temperature sensors",
-      "Pump-motor shaft couplings and guard"
-    ],
-    brochureUrl: "/downloads/ksb_megachem_brochure.pdf",
-    datasheetUrl: "/downloads/ksb_megachem_datasheet.pdf"
-  },
-  {
-    id: "ksb-amarex-pump",
-    name: "KSB Amarex KRT Submersible Pump",
-    brand: "KSB",
-    category: "Pumps",
-    modelNumber: "Amarex KRT F 100-250",
-    rating: "7.5 kW - 30 kW",
-    shortDescription: "Submersible motor pump for raw municipal and industrial wastewater containing solids, fibers, and sludge.",
-    fullDescription: "The KSB Amarex KRT is a robust submersible motor pump designed for handling untreated sewage, wastewater containing long fibers, solids, and sludge. Equipped with clog-resistant impellers and explosion-proof motors, it ensures block-free operation in the toughest wet-well conditions.",
-    price: "Contact for Quote",
-    availability: "Available on Order (3 Weeks)",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=600",
-    specs: {
-      "Max Flow Rate": "280 m³/h",
-      "Max Discharge Head": "45 meters",
-      "Motor Rating": "7.5 kW to 30 kW",
-      "Impeller Type": "F-max (Vortex), D-max (Single-channel), K-max (Non-clogging)",
-      "Material": "Cast Iron / Duplex Stainless Steel (Option)",
-      "Protection Class": "IP68, Ex d IIB T4",
-      "Installation Type": "Wet-well with guide rails / Dry-well vertical"
-    },
-    features: [
-      "Explosion-proof ATEX-certified motor as standard",
-      "Custom impeller designs optimized for solid passage to prevent clogging",
-      "Eco-friendly, water-cooled shaft chamber avoids fluid contamination",
-      "Dual mechanical seals with oil reservoir ensure dry motor protection",
-      "Pre-assembled duckfoot duck coupling for easy installation and removal"
-    ],
-    applications: [
-      "Municipal sewage pumping stations",
-      "Wastewater treatment plants",
-      "Flood control and stormwater collection",
-      "Industrial effluent and slurry drainage"
-    ],
-    accessories: [
-      "Duckfoot bend and guide rail brackets",
-      "Moisture sensors for motor housing leak detection",
-      "Chain and shackle installation kits",
-      "Submersible power cable with plug"
-    ],
-    brochureUrl: "/downloads/ksb_amarex_brochure.pdf",
-    datasheetUrl: "/downloads/ksb_amarex_datasheet.pdf"
-  }
+  ...pumps
 ];

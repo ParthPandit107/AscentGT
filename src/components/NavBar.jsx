@@ -10,11 +10,14 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
   const [searchQuery, setSearchQuery] = useState('');
   const [productsDropdown, setProductsDropdown] = useState(false);
   const [vfdFlyout, setVfdFlyout] = useState(false);
+  const [pumpsFlyout, setPumpsFlyout] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [mobileVfdOpen, setMobileVfdOpen] = useState(false);
+  const [mobilePumpsOpen, setMobilePumpsOpen] = useState(false);
 
   const dropdownTimerRef = useRef(null);
   const vfdTimerRef = useRef(null);
+  const pumpsTimerRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -37,17 +40,31 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     dropdownTimerRef.current = setTimeout(() => {
       setProductsDropdown(false);
       setVfdFlyout(false);
+      setPumpsFlyout(false);
     }, 180);
   };
 
   const handleVfdEnter = () => {
     if (vfdTimerRef.current) clearTimeout(vfdTimerRef.current);
+    setPumpsFlyout(false);
     setVfdFlyout(true);
   };
 
   const handleVfdLeave = () => {
     vfdTimerRef.current = setTimeout(() => {
       setVfdFlyout(false);
+    }, 180);
+  };
+
+  const handlePumpsEnter = () => {
+    if (pumpsTimerRef.current) clearTimeout(pumpsTimerRef.current);
+    setVfdFlyout(false);
+    setPumpsFlyout(true);
+  };
+
+  const handlePumpsLeave = () => {
+    pumpsTimerRef.current = setTimeout(() => {
+      setPumpsFlyout(false);
     }, 180);
   };
 
@@ -59,6 +76,15 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     { name: "GA500-P&F", slug: "ga500-pf" },
     { name: "Varispeed G7 - 3 Level control method", slug: "varispeed-g7" },
     { name: "Engineered Panel Solutions", slug: "engineered-panel-solutions" },
+  ];
+
+  // Pumps categories matching Drives format
+  const pumpNavCategories = [
+    { name: "All KSB Pumping Systems", to: "/products?category=Pumps" },
+    { name: "Pressure Boosting & High-Pressure", to: "/products?category=Pumps&sub=pressure-boosting" },
+    { name: "Water Supply, HVAC & Building Services", to: "/products?category=Pumps&sub=water-supply-hvac" },
+    { name: "Drainage & Sewage", to: "/products?category=Pumps&sub=drainage-sewage" },
+    { name: "Firefighting Pumps", to: "/products?category=Pumps&sub=firefighting" },
   ];
 
   const isProductsActive = location.pathname.startsWith('/products');
@@ -169,13 +195,49 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                     </div>
 
                     {/* Pumps */}
-                    <Link
-                      to="/products?category=Pumps"
-                      onClick={() => setProductsDropdown(false)}
-                      className="block px-4 py-2.5 text-xs font-bold tracking-wide text-text-dark hover:bg-slate-50 hover:text-[#65a30d] transition-colors uppercase"
+                    <div 
+                      className="relative"
+                      onMouseEnter={handlePumpsEnter}
+                      onMouseLeave={handlePumpsLeave}
                     >
-                      Pumps
-                    </Link>
+                      <div 
+                        className={`px-4 py-2.5 text-xs font-bold tracking-wide flex items-center justify-between cursor-pointer transition-colors ${
+                          pumpsFlyout ? 'bg-[#65a30d]/10 text-[#65a30d]' : 'text-text-dark hover:bg-slate-50 hover:text-[#65a30d]'
+                        }`}
+                        onClick={() => {
+                          navigate('/products?category=Pumps');
+                          setProductsDropdown(false);
+                        }}
+                      >
+                        <span className="uppercase">Pumps</span>
+                        <ChevronRight size={14} className="text-text-muted-light group-hover:text-[#65a30d]" />
+                      </div>
+
+                      {/* Nested Flyout: Pumps Categories */}
+                      {pumpsFlyout && (
+                        <div 
+                          className="absolute left-full top-0 pl-1 z-50 animate-in fade-in duration-150"
+                          onMouseEnter={handlePumpsEnter}
+                          onMouseLeave={handlePumpsLeave}
+                        >
+                          <div className="w-80 bg-white border border-border rounded-sm shadow-2xl py-1.5">
+                            {pumpNavCategories.map((p, idx) => (
+                              <Link
+                                key={idx}
+                                to={p.to}
+                                onClick={() => {
+                                  setProductsDropdown(false);
+                                  setPumpsFlyout(false);
+                                }}
+                                className="block px-4 py-2.5 text-xs font-semibold text-text-dark hover:bg-[#65a30d]/10 hover:text-[#65a30d] transition-colors whitespace-nowrap"
+                              >
+                                {p.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
 
                     {/* Motors */}
                     <Link
@@ -488,16 +550,34 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
                     )}
                   </div>
 
-                  <Link
-                    to="/products?category=Pumps"
-                    onClick={() => {
-                      setIsOpen(false);
-                      setMobileProductsOpen(false);
-                    }}
-                    className="block py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
-                  >
-                    Pumps
-                  </Link>
+                  {/* Pumps Sub-accordion */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setMobilePumpsOpen(!mobilePumpsOpen)}
+                      className="w-full flex items-center justify-between py-1.5 font-bold uppercase text-text-dark hover:text-[#65a30d]"
+                    >
+                      <span>Pumps</span>
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${mobilePumpsOpen ? 'rotate-180 text-[#65a30d]' : ''}`} />
+                    </button>
+                    {mobilePumpsOpen && (
+                      <div className="pl-3 py-1 space-y-1 border-l-2 border-[#65a30d]/40 my-1">
+                        {pumpNavCategories.map((p, idx) => (
+                          <Link
+                            key={idx}
+                            to={p.to}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setMobileProductsOpen(false);
+                            }}
+                            className="block py-1 text-xs text-text-muted-dark hover:text-[#65a30d]"
+                          >
+                            {p.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
 
                   <Link
                     to="/products?category=Motors"

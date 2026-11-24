@@ -88,13 +88,18 @@ I need technical details, quotation proposal, and delivery timeline.`;
           {/* Details Column */}
           <div className="space-y-6 flex flex-col">
             <div className="space-y-2">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className={`text-[10px] font-bold text-white px-2.5 py-0.5 uppercase tracking-wider rounded-sm ${
-                  product.brand === 'ABB' ? 'bg-sky-deep' : product.brand === 'Yaskawa' ? 'bg-green' : 'bg-dark-bg'
+                  product.brand === 'ABB' ? 'bg-red-600' : product.brand === 'KSB' ? 'bg-[#003ea5]' : product.brand === 'Yaskawa' ? 'bg-green' : 'bg-dark-bg'
                 }`}>
                   {product.brand}
                 </span>
-                <span className="text-[10px] font-bold text-text-muted-dark uppercase tracking-wider">{product.category}</span>
+                <span className="text-[10px] font-bold text-text-muted-dark uppercase tracking-wider">{product.subCategory || product.category}</span>
+                {product.badge && (
+                  <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-300 px-2 py-0.5 uppercase tracking-wider rounded-sm">
+                    {product.badge}
+                  </span>
+                )}
               </div>
               <h1 className="font-headings text-3xl sm:text-4xl font-normal text-text-dark leading-tight">{product.name}</h1>
               <div className="space-y-1 pt-1 font-mono text-xs sm:text-sm">
