@@ -78,13 +78,12 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
     { name: "Engineered Panel Solutions", slug: "engineered-panel-solutions" },
   ];
 
-  // Pumps categories matching Drives format
+  // Pumps categories matching exact KSB organization
   const pumpNavCategories = [
     { name: "All KSB Pumping Systems", to: "/products?category=Pumps" },
-    { name: "Pressure Boosting & High-Pressure", to: "/products?category=Pumps&sub=pressure-boosting" },
-    { name: "Water Supply, HVAC & Building Services", to: "/products?category=Pumps&sub=water-supply-hvac" },
-    { name: "Drainage & Sewage", to: "/products?category=Pumps&sub=drainage-sewage" },
-    { name: "Firefighting Pumps", to: "/products?category=Pumps&sub=firefighting" },
+    { name: "Building Services", to: "/products?category=Pumps&sub=building-services" },
+    { name: "Firefighting", to: "/products?category=Pumps&sub=firefighting" },
+    { name: "HVAC", to: "/products?category=Pumps&sub=hvac" },
   ];
 
   const isProductsActive = location.pathname.startsWith('/products');

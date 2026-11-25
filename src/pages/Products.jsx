@@ -56,14 +56,12 @@ export default function Products({ onRequestQuote, products = staticProducts }) 
     }
     const sub = searchParams.get('sub');
     if (sub) {
-      if (sub === 'pressure-boosting') {
-        setSelectedPumpSubCategory('Pressure Boosting & High-Pressure');
-      } else if (sub === 'water-supply-hvac') {
-        setSelectedPumpSubCategory('Water Supply, HVAC & General Building Services');
-      } else if (sub === 'drainage-sewage') {
-        setSelectedPumpSubCategory('Drainage & Sewage');
-      } else if (sub === 'firefighting') {
-        setSelectedPumpSubCategory('Firefighting Pumps');
+      if (sub === 'building-services' || sub === 'Building Services') {
+        setSelectedPumpSubCategory('Building Services');
+      } else if (sub === 'firefighting' || sub === 'Firefighting' || sub === 'firefighting-pumps') {
+        setSelectedPumpSubCategory('Firefighting');
+      } else if (sub === 'hvac' || sub === 'HVAC') {
+        setSelectedPumpSubCategory('HVAC');
       } else {
         setSelectedPumpSubCategory(sub);
       }
@@ -110,7 +108,8 @@ export default function Products({ onRequestQuote, products = staticProducts }) 
     if (subCat === 'All') {
       searchParams.delete('sub');
     } else {
-      searchParams.set('sub', subCat);
+      const slug = subCat.toLowerCase().replace(/\s+/g, '-');
+      searchParams.set('sub', slug);
     }
     setSearchParams(searchParams);
   };
