@@ -20,24 +20,23 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Grid Structure */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-sky-light/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-sky-light/10">
           
           {/* Brand Info */}
-          <div className="space-y-4">
-            <div className="bg-white p-3 rounded-xs inline-flex items-center gap-3 shadow-xs max-w-full">
-              <img src={logo} alt="AGT Logo" className="h-11 w-auto object-contain shrink-0" />
+          <div className="space-y-4 lg:col-span-4">
+            <div className="bg-white px-3.5 py-2.5 rounded-xs inline-flex items-center gap-3 shadow-xs">
+              <img src={logo} alt="AGT Logo" className="h-10 sm:h-11 w-auto object-contain shrink-0" />
               <div className="flex flex-col text-left justify-center min-w-0">
-                <div className="font-sans font-black text-xs leading-tight">
+                <span className="font-sans font-black text-xs sm:text-[13px] tracking-tight leading-tight whitespace-nowrap">
                   <span className="text-[#84cc16]">ASCENT </span>
-                  <span className="text-black">GREEN TECHNOLOGIES</span>
-                  <div className="text-black text-[10px] tracking-wider mt-0.5">PVT. LTD.</div>
-                </div>
-                <span className="text-[8.5px] text-[#002060] font-bold tracking-wider leading-none mt-1.5 whitespace-nowrap">
+                  <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
+                </span>
+                <span className="text-[8.5px] sm:text-[9.5px] text-[#002060] font-bold tracking-wider whitespace-nowrap leading-none mt-1">
                   Formerly known as Ascent Control Systems
                 </span>
               </div>
             </div>
-            <p className="text-xs text-sky-light/70 leading-relaxed">
+            <p className="text-xs text-sky-light/70 leading-relaxed max-w-sm">
               Authorized partner for ABB, Yaskawa & KSB. Delivering advanced low-voltage electric motors, frequency drives, industrial automation systems, and high-performance pumps across India.
             </p>
             <div className="pt-2">
@@ -54,7 +53,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:col-span-2">
             <h4 className="font-headings text-white text-base font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-sky">
               Sitemap
             </h4>
@@ -71,7 +70,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
           </div>
 
           {/* Product Brands */}
-          <div>
+          <div className="lg:col-span-3">
             <h4 className="font-headings text-white text-base font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-sky">
               Our Brands
             </h4>
@@ -95,7 +94,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
           </div>
 
           {/* Contact Details */}
-          <div>
+          <div className="lg:col-span-3">
             <h4 className="font-headings text-white text-base font-semibold mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-sky">
               Contact Info
             </h4>
