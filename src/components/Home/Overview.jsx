@@ -30,7 +30,7 @@ export default function Overview() {
         </h2>
         
         <p className="font-body text-text-muted-light mb-4 text-xs sm:text-sm leading-relaxed max-w-[540px]">
-          <strong>ASCENT GREEN TECHNOLOGIES PVT. LTD. (formerly known as ASCENT CONTROL SYSTEMS)</strong> is an integrated industrial automation, fluid-handling, and energy-efficiency engineering company. As Authorized Value Business Partners for <strong>YASAKAWA</strong>, <strong>ABB</strong>, and <strong>KSB</strong>, we deliver complete, application-matched drive, motor, and pumping systems under one roof.
+          <strong><span className="text-[#84cc16]">ASCENT </span><span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span> (formerly known as ASCENT CONTROL SYSTEMS)</strong> is an integrated industrial automation, fluid-handling, and energy-efficiency engineering company. As Authorized Value Business Partners for <strong>YASKAWA</strong>, <strong>ABB</strong>, and <strong>KSB</strong>, we deliver complete, application-matched drive, motor, and pumping systems under one roof.
         </p>
         
         <p className="font-body text-text-muted-light mb-6 text-xs sm:text-sm leading-relaxed max-w-[540px]">

@@ -67,7 +67,8 @@ export default function About() {
         <div className="absolute inset-0 bg-linear-to-r from-dark-bg via-dark-surface to-dark-bg opacity-90"></div>
         <div className="relative max-w-4xl mx-auto space-y-4">
           <h1 className="font-headings text-3xl sm:text-5xl font-bold leading-tight">
-            Ascent Green Technologies Pvt. Ltd.
+            <span className="text-[#84cc16]">ASCENT </span>
+            <span className="text-white">GREEN TECHNOLOGIES PVT. LTD.</span>
           </h1>
           <p className="text-xs sm:text-sm text-green-bright font-semibold tracking-wider uppercase">
             Formerly known as Ascent Control Systems
@@ -89,7 +90,7 @@ export default function About() {
           
           <div className="space-y-4 text-xs sm:text-sm text-text-muted-light leading-relaxed">
             <p>
-              <strong className="text-text-dark">ASCENT GREEN TECHNOLOGIES PVT. LTD. (formerly known as ASCENT CONTROL SYSTEMS)</strong> is an integrated industrial automation, fluid-handling, and energy-efficiency engineering company committed to delivering complete, application-based electro-mechanical and control solutions.
+              <strong className="text-text-dark"><span className="text-[#84cc16]">ASCENT </span><span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span> (formerly known as ASCENT CONTROL SYSTEMS)</strong> is an integrated industrial automation, fluid-handling, and energy-efficiency engineering company committed to delivering complete, application-based electro-mechanical and control solutions.
             </p>
             <p>
               As Authorized Value Business Partners for <strong className="text-text-dark">YASKAWA</strong>, <strong className="text-text-dark">ABB</strong>, and <strong className="text-text-dark">KSB</strong>, we bring together world-class Variable Frequency Drive technology, premium efficiency Low Voltage (LV) motors (IE4 / IE5), and precision pumping systems (HVAC / FIRE / PHE) under one roof—enabling commercial facilities and industrial plants to maximize energy savings, enhance system reliability, and minimize Total Cost of Ownership (TCO).

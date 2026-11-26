@@ -93,14 +93,14 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
       <div className="w-full px-3 sm:px-4 lg:px-4 xl:px-5 2xl:px-8 h-20 lg:h-22 flex items-center justify-between">
         
         {/* Left Side: Navigation Links & Search */}
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 shrink-0">
-          <nav className="flex items-center gap-3 xl:gap-5 2xl:gap-7 whitespace-nowrap shrink-0">
+        <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 2xl:gap-4 shrink-0">
+          <nav className="flex items-center gap-2 xl:gap-3.5 2xl:gap-6 whitespace-nowrap shrink-0">
             
             {/* 1. Home */}
             <NavLink
               to="/"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -114,7 +114,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/about"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -132,7 +132,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             >
               <NavLink
                 to="/products"
-                className={`whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
+                className={`whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 inline-flex items-center gap-1 ${
                   isProductsActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -265,7 +265,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/brands"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -279,7 +279,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/clientele"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -293,7 +293,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/industries"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -307,7 +307,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/careers"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -321,7 +321,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
             <NavLink
               to="/contact"
               className={({ isActive }) => 
-                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                   isActive 
                     ? 'text-black border-green' 
                     : 'text-black border-transparent hover:border-black/40'
@@ -336,7 +336,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               <NavLink
                 to="/admin"
                 className={({ isActive }) => 
-                  `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                  `whitespace-nowrap text-[11px] xl:text-[12px] 2xl:text-[13.5px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
                     isActive 
                       ? 'text-black border-green' 
                       : 'text-black border-transparent hover:border-black/40'
@@ -403,18 +403,18 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
           onClick={() => setIsOpen(false)}
         >
           <div className="flex flex-col select-none text-right justify-center">
-            <span className="font-sans font-black tracking-tight text-base sm:text-lg md:text-xl lg:text-[19px] xl:text-[20px] 2xl:text-[24px] whitespace-nowrap leading-tight">
-              <span className="text-[#65a30d]">ASCENT </span>
+            <span className="font-sans font-black tracking-tight text-xs sm:text-sm lg:text-[14px] xl:text-[17px] 2xl:text-[22px] whitespace-nowrap leading-tight">
+              <span className="text-[#84cc16]">ASCENT </span>
               <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
             </span>
-            <span className="text-[9px] sm:text-[10px] md:text-[11px] text-[#002060] font-bold tracking-wider whitespace-nowrap leading-none mt-0.5">
+            <span className="text-[8px] sm:text-[9px] lg:text-[8.5px] xl:text-[9.5px] 2xl:text-[11px] text-[#002060] font-bold tracking-wider whitespace-nowrap leading-none mt-0.5">
               Formerly known as Ascent Control Systems
             </span>
           </div>
           <img 
             src={logo} 
             alt="AGTPL Logo" 
-            className="h-9 sm:h-11 lg:h-12 w-auto object-contain shrink-0" 
+            className="h-8 lg:h-9 xl:h-10 2xl:h-12 w-auto object-contain shrink-0" 
           />
         </Link>
 
@@ -457,7 +457,7 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
           >
             <div className="flex flex-col text-right justify-center">
               <span className="font-sans font-black text-[11px] sm:text-xs whitespace-nowrap leading-tight">
-                <span className="text-[#65a30d]">ASCENT </span>
+                <span className="text-[#84cc16]">ASCENT </span>
                 <span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
               </span>
               <span className="text-[7.5px] sm:text-[8.5px] text-[#002060] font-semibold tracking-wider whitespace-nowrap leading-none">

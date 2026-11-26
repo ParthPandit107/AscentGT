@@ -9,12 +9,13 @@ import {
   Mail, 
   MapPin, 
   Send,
-  CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  Building
 } from 'lucide-react';
 import useSeo from '../hooks/useSeo';
 
-// Careers images provided by AGTPL
+// Authentic career images provided by AGTPL
 import techImg from '../assets/careers/work-with-advanced-technology.jpg';
 import envImg from '../assets/careers/supportive-work-environment.jpg';
 import learningImg from '../assets/careers/learning-and-growth.jpg';
@@ -22,21 +23,36 @@ import learningImg from '../assets/careers/learning-and-growth.jpg';
 export default function Careers() {
   useSeo(
     'Careers | Ascent Green Technologies Private Limited',
-    'Build your future with Ascent Green Technologies. Explore job opportunities in service engineering, project execution, and sales & marketing in Faridabad, Haryana.'
+    'Build your future with Ascent Green Technologies. Explore corporate career opportunities in service engineering, project execution, and sales & marketing in Faridabad, Haryana.'
   );
 
   const opportunities = [
     {
       title: "Service Engineer",
-      description: "Electronics/ Electrical engineers, and technical specialists."
+      department: "Engineering & Field Services",
+      description: "Electronics/ Electrical engineers, and technical specialists.",
+      scope: "Hands-on commissioning, site troubleshooting, drive programming, and motor-pump control integration.",
+      location: "Faridabad, Haryana",
+      type: "Full-Time",
+      subject: "Application for Service Engineer - AGTPL"
     },
     {
       title: "Project Execution",
-      description: "Post order Handling."
+      department: "Operations & Project Delivery",
+      description: "Post order Handling.",
+      scope: "Coordinating electro-mechanical deliverables, technical submittals, testing oversight, logistics, and client site handover.",
+      location: "Faridabad, Haryana",
+      type: "Full-Time",
+      subject: "Application for Project Execution - AGTPL"
     },
     {
       title: "Sales & Marketing",
-      description: "Sales engineers, business development executives, and marketing professionals."
+      department: "Commercial & Business Development",
+      description: "Sales engineers, business development executives, and marketing professionals.",
+      scope: "Client relationship management, technical proposal generation, and OEM account engagement across ABB, Yaskawa, and KSB portfolios.",
+      location: "Faridabad, Haryana",
+      type: "Full-Time",
+      subject: "Application for Sales & Marketing - AGTPL"
     }
   ];
 
@@ -91,9 +107,9 @@ export default function Careers() {
     }
   ];
 
-  const email = "rahulbhat@ascentgtpl.com";
-  const subject = "Application for [Job Position]";
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+  const hrEmail = "rahulbhat@ascentgtpl.com";
+  const defaultSubject = "Application for [Job Position]";
+  const defaultMailto = `mailto:${hrEmail}?subject=${encodeURIComponent(defaultSubject)}`;
 
   return (
     <div className="w-full font-body bg-light-bg py-14 px-4 sm:px-6 lg:px-8">
@@ -101,21 +117,21 @@ export default function Careers() {
         
         {/* ================= 1. HEADER & INTRO ================= */}
         <section className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-[11px] font-bold tracking-widest text-[#003ea5] uppercase block bg-blue-50 border border-blue-200/80 px-3 py-1 rounded-xs inline-block">
+          <span className="text-xs font-bold tracking-widest text-sky-deep uppercase block">
             BUILD YOUR FUTURE WITH US
           </span>
-          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark tracking-wide">
-            Careers at Ascent Green Technologies Private Limited
+          <h1 className="font-headings text-3xl sm:text-4xl lg:text-5xl font-bold text-black tracking-tight">
+            Careers at <span className="text-[#84cc16]">ASCENT </span><span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
           </h1>
           <div className="w-16 h-1 bg-green mx-auto"></div>
           
-          <h2 className="text-xl sm:text-2xl font-semibold text-text-dark pt-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-text-dark pt-2">
             Grow Your Career. Innovate with Us.
           </h2>
 
           <div className="space-y-4 text-text-muted-dark text-sm sm:text-base leading-relaxed text-left sm:text-center pt-2">
             <p>
-              At <strong className="text-text-dark">Ascent Green Technologies Private Limited</strong>, we believe that our people are the foundation of our success. As an automation-focused company, we are committed to innovation, technology, quality, and continuous improvement.
+              At <strong className="text-black"><span className="text-[#84cc16]">ASCENT </span>GREEN TECHNOLOGIES PVT. LTD.</strong>, we believe that our people are the foundation of our success. As an automation-focused company, we are committed to innovation, technology, quality, and continuous improvement.
             </p>
             <p>
               We provide an environment where talented and passionate individuals can develop their skills, explore new opportunities, and build rewarding careers. Whether you are an experienced professional or a fresh graduate, we welcome individuals who are eager to learn, take on challenges, and contribute to technological advancement.
@@ -124,10 +140,10 @@ export default function Careers() {
         </section>
 
         {/* ================= 2. JOB OPPORTUNITIES ================= */}
-        <section className="bg-light-surface border border-border p-6 sm:p-8 rounded-sm shadow-xs space-y-6">
-          <div className="border-b border-border/70 pb-4">
-            <div className="flex items-center gap-2 text-text-dark">
-              <Briefcase className="text-[#003ea5]" size={22} />
+        <section className="bg-white border border-border p-6 sm:p-8 rounded-sm shadow-xs space-y-6">
+          <div className="border-b border-border/80 pb-4">
+            <div className="flex items-center gap-2.5 text-text-dark">
+              <Briefcase className="text-sky-deep" size={24} />
               <h3 className="font-headings text-2xl font-bold">
                 Job Opportunities
               </h3>
@@ -137,24 +153,50 @@ export default function Careers() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {opportunities.map((job, idx) => (
               <div 
                 key={idx}
-                className="bg-white border border-border p-5 rounded-xs flex flex-col justify-between hover:border-[#003ea5]/50 transition-colors"
+                className="bg-sky-pale/30 border border-border rounded-sm p-6 flex flex-col justify-between hover:border-sky-deep/50 hover:shadow-xs transition-all"
               >
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-full bg-blue-50 text-[#003ea5] font-bold text-xs flex items-center justify-center shrink-0">
-                      {idx + 1}
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <span className="text-[10px] font-bold text-sky-deep uppercase tracking-wider block">
+                      {job.department}
                     </span>
-                    <h4 className="font-headings text-base font-bold text-text-dark">
+                    <h4 className="font-headings text-lg font-bold text-black">
                       {job.title}
                     </h4>
                   </div>
-                  <p className="text-xs text-text-muted-light leading-relaxed pl-8">
+
+                  <p className="text-xs text-text-dark font-medium leading-relaxed">
                     {job.description}
                   </p>
+
+                  <p className="text-xs text-text-muted-light leading-relaxed">
+                    {job.scope}
+                  </p>
+
+                  <div className="pt-2 text-[11px] text-text-muted-dark space-y-1 font-mono">
+                    <div className="flex items-center gap-1.5">
+                      <MapPin size={13} className="text-sky-deep shrink-0" />
+                      <span>{job.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Clock size={13} className="text-sky-deep shrink-0" />
+                      <span>{job.type}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-5 border-t border-border/60 mt-5">
+                  <a
+                    href={`mailto:${hrEmail}?subject=${encodeURIComponent(job.subject)}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-deep hover:text-green transition-colors"
+                  >
+                    <span>Apply for this Role</span>
+                    <ArrowRight size={14} />
+                  </a>
                 </div>
               </div>
             ))}
@@ -164,14 +206,14 @@ export default function Careers() {
         {/* ================= 3. CAREER GROWTH & DEVELOPMENT ================= */}
         <section className="space-y-6">
           <div>
-            <div className="flex items-center gap-2 text-text-dark">
-              <TrendingUp className="text-green" size={22} />
+            <div className="flex items-center gap-2.5 text-text-dark">
+              <TrendingUp className="text-green" size={24} />
               <h3 className="font-headings text-2xl font-bold">
                 Career Growth &amp; Development
               </h3>
             </div>
             <p className="text-sm text-text-muted-dark mt-2">
-              At <strong className="text-text-dark">Ascent Green Technologies Private Limited</strong>, we believe career growth is a continuous journey. We encourage employees to enhance their professional capabilities through:
+              At <strong className="text-black"><span className="text-[#84cc16]">ASCENT </span>GREEN TECHNOLOGIES PVT. LTD.</strong>, we believe career growth is a continuous journey. We encourage employees to enhance their professional capabilities through:
             </p>
           </div>
 
@@ -181,19 +223,17 @@ export default function Careers() {
               return (
                 <div 
                   key={idx}
-                  className="bg-light-surface border border-border p-5 rounded-sm flex items-start gap-3.5 hover:shadow-xs transition-shadow"
+                  className="bg-white border border-border border-l-4 border-l-green p-5 rounded-sm hover:shadow-xs transition-shadow space-y-2"
                 >
-                  <div className="p-2 rounded-xs bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0 mt-0.5">
-                    <Icon size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-headings text-sm font-bold text-text-dark">
+                  <div className="flex items-center gap-2.5 text-text-dark">
+                    <Icon size={18} className="text-green shrink-0" />
+                    <h4 className="font-headings text-sm font-bold text-black">
                       {point.title}
                     </h4>
-                    <p className="text-xs text-text-muted-dark mt-1 leading-relaxed">
-                      {point.description}
-                    </p>
                   </div>
+                  <p className="text-xs text-text-muted-dark leading-relaxed pl-7">
+                    {point.description}
+                  </p>
                 </div>
               );
             })}
@@ -203,8 +243,8 @@ export default function Careers() {
         {/* ================= 4. WHY JOIN ASCENT GREEN TECHNOLOGIES? ================= */}
         <section className="space-y-6">
           <div className="text-center sm:text-left">
-            <h3 className="font-headings text-2xl font-bold text-text-dark">
-              Why Join Ascent Green Technologies?
+            <h3 className="font-headings text-2xl font-bold text-black">
+              Why Join <span className="text-[#84cc16]">ASCENT </span><span className="text-black">GREEN TECHNOLOGIES</span>?
             </h3>
             <div className="w-12 h-1 bg-green mt-2 sm:mx-0 mx-auto"></div>
           </div>
@@ -213,17 +253,17 @@ export default function Careers() {
             {whyJoinUs.map((pillar, idx) => (
               <div 
                 key={idx}
-                className="bg-light-surface border border-border rounded-sm overflow-hidden flex flex-col hover:shadow-md transition-shadow group"
+                className="bg-white border border-border rounded-sm overflow-hidden flex flex-col hover:shadow-md transition-shadow group"
               >
-                <div className="h-48 bg-slate-100 overflow-hidden border-b border-border">
+                <div className="h-52 bg-slate-100 overflow-hidden border-b border-border">
                   <img 
                     src={pillar.image} 
                     alt={pillar.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h4 className="font-headings text-base font-bold text-text-dark mb-2 group-hover:text-green transition-colors">
+                  <h4 className="font-headings text-base font-bold text-black mb-2 group-hover:text-green transition-colors">
                     {pillar.title}
                   </h4>
                   <p className="text-xs text-text-muted-dark leading-relaxed flex-1">
@@ -236,76 +276,82 @@ export default function Careers() {
         </section>
 
         {/* ================= 5. JOIN OUR TEAM & APPLY NOW ================= */}
-        <section className="bg-gradient-to-br from-slate-900 via-[#0a2540] to-slate-900 text-white p-8 sm:p-10 rounded-sm shadow-md space-y-8">
-          <div className="max-w-2xl space-y-4">
-            <span className="text-[10px] font-bold tracking-widest text-green-bright uppercase block">
+        <section className="bg-white border-2 border-sky-deep/20 rounded-sm p-8 sm:p-10 shadow-xs space-y-8">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs font-bold tracking-widest text-sky-deep uppercase block">
               JOIN OUR TEAM
             </span>
-            <h3 className="font-headings text-2xl sm:text-3xl font-bold text-white">
+            <h3 className="font-headings text-2xl sm:text-3xl font-bold text-black">
               Are you passionate about technology, automation, and innovation?
             </h3>
-            <p className="text-sm text-slate-300 leading-relaxed">
+            <p className="text-sm text-text-muted-dark leading-relaxed">
               Do you want to be part of a team that works towards creating smarter and more efficient solutions? We are always interested in connecting with talented individuals who are enthusiastic, dedicated, and ready to grow with us.
             </p>
-            <p className="text-sm font-medium text-slate-200">
-              Take the next step in your career and become a part of Ascent Green Technologies Private Limited.
+            <p className="text-sm font-semibold text-black">
+              Take the next step in your career and become a part of <span className="text-[#84cc16]">ASCENT </span><span className="text-black">GREEN TECHNOLOGIES PVT. LTD.</span>
             </p>
           </div>
 
-          {/* Apply Now Box */}
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-sm space-y-4">
-            <h4 className="font-headings text-xl font-bold text-white">
-              Apply Now
-            </h4>
-            <p className="text-xs text-slate-200">
-              Interested candidates can share their updated resume with our HR team.
-            </p>
+          {/* Corporate Application Box */}
+          <div className="bg-sky-pale/40 border border-border p-6 rounded-sm space-y-5">
+            <div>
+              <h4 className="font-headings text-xl font-bold text-black">
+                Apply Now
+              </h4>
+              <p className="text-xs text-text-muted-dark mt-1">
+                Interested candidates can share their updated resume with our HR team.
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 p-3 rounded-xs">
-                <Mail size={16} className="text-green-bright shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px] uppercase">Email</span>
-                  <a href={mailtoLink} className="text-white hover:text-green-bright font-semibold underline">
-                    {email}
-                  </a>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div className="bg-white border border-border p-4 rounded-xs space-y-1">
+                <div className="flex items-center gap-2 text-sky-deep font-bold text-[10px] uppercase tracking-wider">
+                  <Mail size={14} />
+                  <span>Email</span>
                 </div>
+                <a href={defaultMailto} className="text-black hover:text-green font-semibold block text-sm">
+                  {hrEmail}
+                </a>
               </div>
 
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 p-3 rounded-xs">
-                <Send size={16} className="text-green-bright shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px] uppercase">Subject Line</span>
-                  <span className="text-white font-semibold font-mono text-[11px]">{subject}</span>
+              <div className="bg-white border border-border p-4 rounded-xs space-y-1">
+                <div className="flex items-center gap-2 text-sky-deep font-bold text-[10px] uppercase tracking-wider">
+                  <Send size={14} />
+                  <span>Subject Line</span>
                 </div>
+                <span className="text-black font-semibold font-mono text-xs block">
+                  {defaultSubject}
+                </span>
               </div>
 
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 p-3 rounded-xs sm:col-span-2">
-                <MapPin size={16} className="text-green-bright shrink-0" />
-                <div>
-                  <span className="text-slate-400 block text-[10px] uppercase">Location</span>
-                  <span className="text-white font-semibold">Faridabad, Haryana</span>
+              <div className="bg-white border border-border p-4 rounded-xs space-y-1">
+                <div className="flex items-center gap-2 text-sky-deep font-bold text-[10px] uppercase tracking-wider">
+                  <MapPin size={14} />
+                  <span>Location</span>
                 </div>
+                <span className="text-black font-semibold block text-sm">
+                  Faridabad, Haryana
+                </span>
               </div>
             </div>
 
             <div className="pt-2">
               <a
-                href={mailtoLink}
-                className="inline-flex items-center gap-2 bg-green hover:bg-green-bright text-white px-6 py-3 font-bold text-xs uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
+                href={defaultMailto}
+                className="inline-flex items-center gap-2 bg-green hover:bg-green-bright text-white px-7 py-3 font-bold text-xs uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
               >
                 <span>Send Resume via Email</span>
-                <ArrowRight size={14} />
+                <Send size={14} />
               </a>
             </div>
           </div>
 
           {/* Tagline Footer */}
-          <div className="border-t border-white/15 pt-6 text-center space-y-1">
-            <p className="text-xs italic text-slate-300">
+          <div className="border-t border-border/80 pt-6 text-center space-y-1">
+            <p className="text-xs italic text-text-muted-light">
               Your future starts here
             </p>
-            <p className="font-headings text-sm sm:text-base font-bold text-white tracking-wide">
+            <p className="font-headings text-base font-bold text-black tracking-wide">
               Let's Grow Together. Let's Innovate Together.
             </p>
           </div>

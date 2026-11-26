@@ -19,45 +19,21 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
     <footer className="w-full bg-dark-bg text-text-light font-body pt-16 border-t-2 border-sky">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top CTA Banner */}
-        <div className="bg-dark-surface border border-sky-light/10 p-8 rounded-sm mb-16 flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
-          <div className="max-w-xl text-center md:text-left">
-            <h3 className="font-headings text-2xl font-normal text-white mb-2">Ready to Elevate Your Industrial Operations?</h3>
-            <p className="text-sm text-sky-light/80">Speak with our engineering team to design, configure, or audit the motor and pump systems for your facility.</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4 w-full md:w-auto">
-            <button
-              onClick={() => onRequestQuote('Consultation Service')}
-              className="bg-green hover:bg-green-bright text-white px-6 py-3 font-bold text-xs uppercase tracking-wider rounded-sm transition-colors cursor-pointer"
-            >
-              Request Consultation
-            </button>
-            <a
-              href="/downloads/agtpl_catalog_2026.pdf"
-              download
-              className="border border-sky-light/40 hover:bg-white/5 text-sky-light px-6 py-3 font-bold text-xs uppercase tracking-wider rounded-sm flex items-center gap-2 transition-colors"
-            >
-              <Download size={14} />
-              Download Brochure
-            </a>
-          </div>
-        </div>
-
         {/* Grid Structure */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-sky-light/10">
           
           {/* Brand Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="bg-white p-1.5 rounded-xs flex items-center justify-center h-12 w-auto">
-                <img src={logo} alt="AGT Logo" className="h-full w-auto object-contain" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-sans font-black tracking-wide text-white text-xs leading-tight whitespace-nowrap">
-                  ASCENT GREEN TECHNOLOGIES
-                </span>
-                <span className="font-sans font-semibold tracking-wider text-green-bright text-[9px] leading-none mt-0.5">
-                  PVT. LTD.
+            <div className="bg-white p-3 rounded-xs inline-flex items-center gap-3 shadow-xs max-w-full">
+              <img src={logo} alt="AGT Logo" className="h-11 w-auto object-contain shrink-0" />
+              <div className="flex flex-col text-left justify-center min-w-0">
+                <div className="font-sans font-black text-xs leading-tight">
+                  <span className="text-[#84cc16]">ASCENT </span>
+                  <span className="text-black">GREEN TECHNOLOGIES</span>
+                  <div className="text-black text-[10px] tracking-wider mt-0.5">PVT. LTD.</div>
+                </div>
+                <span className="text-[8.5px] text-[#002060] font-bold tracking-wider leading-none mt-1.5 whitespace-nowrap">
+                  Formerly known as Ascent Control Systems
                 </span>
               </div>
             </div>
@@ -147,7 +123,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
 
         {/* Bottom Bar */}
         <div className="py-8 flex flex-col sm:flex-row items-center justify-between text-xs text-sky-light/60 gap-4">
-          <p>© {new Date().getFullYear()} Ascent Green Technologies Pvt Ltd (AGTPL). All rights reserved.</p>
+          <p>© {new Date().getFullYear()} <span className="text-[#84cc16] font-bold">ASCENT</span> <span className="text-white font-semibold">GREEN TECHNOLOGIES PVT. LTD.</span> All rights reserved.</p>
           <div className="flex items-center gap-6">
             {isAuthenticated ? (
               <Link to="/admin" className="hover:text-white font-bold text-green-bright">Admin Dashboard</Link>

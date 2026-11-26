@@ -19,8 +19,9 @@ export default function Hero() {
       <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-16 lg:px-24">
         <div className="flex items-center gap-3 mb-4 sm:mb-6">
           <div className="h-px w-8 sm:w-12 bg-green-bright"></div>
-          <span className="font-body text-green-bright tracking-widest uppercase font-semibold text-[10px] sm:text-xs tracking-[0.2em]">
-            Ascent Green Technologies Pvt. Ltd.
+          <span className="font-body tracking-widest uppercase font-semibold text-[10px] sm:text-xs tracking-[0.2em]">
+            <span className="text-[#84cc16]">ASCENT </span>
+            <span className="text-white">GREEN TECHNOLOGIES PVT. LTD.</span>
           </span>
         </div>
         

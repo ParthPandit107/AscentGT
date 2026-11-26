@@ -36,8 +36,9 @@ export default function Preloader() {
 
         {/* Brand Text */}
         <div className="space-y-1">
-          <h2 className="font-sans font-black tracking-wide text-white text-base sm:text-lg md:text-xl leading-tight whitespace-nowrap">
-            ASCENT GREEN TECHNOLOGIES PVT. LTD.
+          <h2 className="font-sans font-black tracking-wide text-base sm:text-lg md:text-xl leading-tight whitespace-nowrap">
+            <span className="text-[#84cc16]">ASCENT </span>
+            <span className="text-white">GREEN TECHNOLOGIES PVT. LTD.</span>
           </h2>
           <p className="font-sans font-medium tracking-wider text-green-bright text-xs">
             Formerly known as Ascent Control Systems
