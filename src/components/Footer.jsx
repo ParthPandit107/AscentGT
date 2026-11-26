@@ -16,7 +16,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
   ];
 
   return (
-    <footer className="w-full bg-dark-bg text-text-light font-body pt-16 border-t-2 border-sky">
+    <footer className="w-full bg-[#002060] text-text-light font-body pt-16 border-t-2 border-sky">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Grid Structure */}
