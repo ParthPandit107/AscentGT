@@ -303,7 +303,21 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               Industries
             </NavLink>
 
-            {/* 7. Contact */}
+            {/* 7. Careers */}
+            <NavLink
+              to="/careers"
+              className={({ isActive }) => 
+                `whitespace-nowrap text-[13px] xl:text-[13.5px] 2xl:text-[15px] uppercase font-bold tracking-normal 2xl:tracking-wide transition-colors py-2 border-b-2 ${
+                  isActive 
+                    ? 'text-black border-green' 
+                    : 'text-black border-transparent hover:border-black/40'
+                }`
+              }
+            >
+              Careers
+            </NavLink>
+
+            {/* 8. Contact */}
             <NavLink
               to="/contact"
               className={({ isActive }) => 
@@ -643,6 +657,20 @@ export default function NavBar({ onRequestQuote, basket = [], isAuthenticated = 
               }
             >
               Industries
+            </NavLink>
+
+            <NavLink
+              to="/careers"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => 
+                `px-3 py-2 text-sm font-semibold uppercase tracking-wider rounded transition-colors whitespace-nowrap ${
+                  isActive 
+                    ? 'text-green border-green font-bold' 
+                    : 'text-text-muted-dark hover:bg-sky-pale hover:text-green'
+                }`
+              }
+            >
+              Careers
             </NavLink>
 
             <NavLink

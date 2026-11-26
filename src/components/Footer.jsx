@@ -11,6 +11,7 @@ export default function Footer({ onRequestQuote, isAuthenticated = false }) {
     { path: '/brands', label: 'Partners' },
     { path: '/clientele', label: 'Clientele' },
     { path: '/industries', label: 'Industries' },
+    { path: '/careers', label: 'Careers' },
     { path: '/contact', label: 'Contact' }
   ];
 

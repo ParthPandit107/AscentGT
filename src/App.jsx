@@ -20,6 +20,7 @@ const Brands = lazy(() => import('./pages/Brands'));
 const Clientele = lazy(() => import('./pages/Clientele'));
 const Industries = lazy(() => import('./pages/Industries'));
 const Projects = lazy(() => import('./pages/Projects'));
+const Careers = lazy(() => import('./pages/Careers'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Login = lazy(() => import('./pages/Login'));
 const Admin = lazy(() => import('./pages/Admin'));
@@ -156,6 +157,7 @@ export default function App() {
                 <Route path="/clientele" element={<Clientele />} />
                 <Route path="/industries" element={<Industries />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/careers" element={<Careers />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/login" element={<Login isAuthenticated={isAuthenticated} onLogin={handleLogin} />} />
                 <Route path="/admin" element={<Admin isAuthenticated={isAuthenticated} onLogout={handleLogout} products={products} onRefreshProducts={loadProducts} />} />
